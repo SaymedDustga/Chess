@@ -327,8 +327,31 @@ public class GameActivity extends AppCompatActivity {
             TBselec = false;
         }
         if(caso == 'P'){
-            PB1Fila = filaMod;
-            PB1Columna = columnaMod;
+            if(filaPiezaCaso == PB1Fila && columnaPiezaCaso == PB1Columna) {
+                PB1Fila = filaMod;
+                PB1Columna = columnaMod;
+            }else if(filaPiezaCaso == PB2Fila && columnaPiezaCaso == PB2Columna) {
+                PB2Fila = filaMod;
+                PB2Columna = columnaMod;
+            }else if(filaPiezaCaso == PB3Fila && columnaPiezaCaso == PB3Columna) {
+                PB3Fila = filaMod;
+                PB3Columna = columnaMod;
+            }else if(filaPiezaCaso == PB4Fila && columnaPiezaCaso == PB4Columna) {
+                PB4Fila = filaMod;
+                PB4Columna = columnaMod;
+            }else if(filaPiezaCaso == PB5Fila && columnaPiezaCaso == PB5Columna) {
+                PB5Fila = filaMod;
+                PB5Columna = columnaMod;
+            }else if(filaPiezaCaso == PB6Fila && columnaPiezaCaso == PB6Columna) {
+                PB6Fila = filaMod;
+                PB6Columna = columnaMod;
+            }else if(filaPiezaCaso == PB7Fila && columnaPiezaCaso == PB7Columna) {
+                PB7Fila = filaMod;
+                PB7Columna = columnaMod;
+            }else if(filaPiezaCaso == PB8Fila && columnaPiezaCaso == PB8Columna) {
+                PB8Fila = filaMod;
+                PB8Columna = columnaMod;
+            }
             imageViews[filaMod][columnaMod].setImageResource(R.drawable.peon_blanca);
             imageViews[filaPiezaCaso][columnaPiezaCaso].setImageResource(R.drawable.vacio);
             PBselec = false;
