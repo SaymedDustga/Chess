@@ -1,7 +1,9 @@
 package com.saymeddustga.chess;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -113,12 +115,12 @@ public class GameActivity extends AppCompatActivity {
 
     //Rey Blanco:
     private int KBFila = 7;
-    private int KBColumna = 2;
+    private int KBColumna = 4;
     //private boolean KBselec = false;
 
     //reina Blanco:
     private int QBFila = 7;
-    private int QBColumna = 5;
+    private int QBColumna = 3;
     //private boolean QBselec = false;
 
     //Negros
@@ -208,17 +210,21 @@ public class GameActivity extends AppCompatActivity {
 
     //Rey Negro:
     private int KNFila = 0;
-    private int KNColumna = 2;
+    private int KNColumna = 4;
     //private boolean KNselec = false;
 
     //reina Negro:
     private int QNFila = 0;
-    private int QNColumna = 5;
+    private int QNColumna = 3;
     //private boolean QNselec = false;
 
     private boolean piezaSeleccionadaGeneral = false;
 
     private int turno = 1;
+
+    private int ganador = 0;
+
+    private boolean finDelJuego = false;
 
     private ImageView[][] imageViews = new ImageView[8][8];
 
@@ -807,39 +813,106 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
+    private void mostrarDialogoGameOver(){
+
+        // 1. Instantiate an <code><a href="/reference/android/app/AlertDialog.Builder.html">AlertDialog.Builder</a></code> with its constructor
+        AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
+
+        // 2. Chain together various setter methods to set the dialog characteristics
+        builder.setMessage("El ganador el es player "+ganador)
+                .setTitle("Game Over");
+
+        // Add the buttons
+        /*builder.setPositiveButton("Jugar de nuevo", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked OK button
+                ganador = 0;
+                deseleccionar();
+                finDelJuego = false;
+            }
+        });*/
+        builder.setNeutralButton("Salir", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+                dialog.dismiss();
+                finish();
+            }
+        });
+
+        // 3. Get the <code><a href="/reference/android/app/AlertDialog.html">AlertDialog</a></code> from <code><a href="/reference/android/app/AlertDialog.Builder.html#create()">create()</a></code>
+        AlertDialog dialog = builder.create();
+
+        // 4. mostrar el dialogo
+        dialog.show();
+
+    }
+
     private void ejecutarAcciones(int filaTrabajando, int columnaTrabajando){
 
         /*
         Antiguo Condicional:
         TBselec == false && PBselec == false && CBselec == false && ABselec==false && KBselec == false && QBselec == false
         * */
+        if(finDelJuego == false) {
 
-        if(piezaSeleccionadaGeneral == false){
-            caso = buscarCaso(filaTrabajando,columnaTrabajando);
-            if(caso != 'b') {
-                if(turnoCorrecto()) {
-                    imageViews[filaTrabajando][columnaTrabajando].setBackgroundColor(Color.WHITE);
-                }else {
-                    Toast.makeText(GameActivity.this,"No es tu turno",Toast.LENGTH_LONG).show();
-                    deseleccionar();
+            if (piezaSeleccionadaGeneral == false) {
+                caso = buscarCaso(filaTrabajando, columnaTrabajando);
+                if (caso != 'b') {
+                    if (turnoCorrecto()) {
+                        imageViews[filaTrabajando][columnaTrabajando].setBackgroundColor(Color.WHITE);
+                    } else {
+                        Toast.makeText(GameActivity.this, "No es tu turno", Toast.LENGTH_LONG).show();
+                        deseleccionar();
+                    }
+                }
+            } else if (filaPiezaCaso == filaTrabajando && columnaPiezaCaso == columnaTrabajando) {
+                pintarFondo(filaTrabajando, columnaTrabajando);
+                deseleccionar();
+            } else if (filaPiezaCaso != filaTrabajando || columnaPiezaCaso != columnaTrabajando) {
+                permiso = posibilidad(filaPiezaCaso, columnaPiezaCaso, filaTrabajando, columnaTrabajando);
+                if (permiso) {
+                    char aux = pixeles[filaPiezaCaso][columnaPiezaCaso];
+                    pixeles[filaPiezaCaso][columnaPiezaCaso] = 'b';
+                    pixeles[filaTrabajando][columnaTrabajando] = aux;
+                    pintarFondo(filaPiezaCaso, columnaPiezaCaso);
+                    permiso = false;
+                    sincronizar(filaTrabajando, columnaTrabajando);
+                    finDelJuego = GameOver();
+                    if(finDelJuego == true){
+                        mostrarDialogoGameOver();
+                    }
+                    turno++;
                 }
             }
-        }else if(filaPiezaCaso == filaTrabajando && columnaPiezaCaso == columnaTrabajando){
-            pintarFondo(filaTrabajando,columnaTrabajando);
-            deseleccionar();
-        } else if(filaPiezaCaso != filaTrabajando || columnaPiezaCaso != columnaTrabajando){
-            permiso = posibilidad(filaPiezaCaso, columnaPiezaCaso,filaTrabajando,columnaTrabajando);
-            if(permiso){
-                char aux = pixeles[filaPiezaCaso][columnaPiezaCaso];
-                pixeles[filaPiezaCaso][columnaPiezaCaso] = 'b';
-                pixeles[filaTrabajando][columnaTrabajando] = aux;
-                pintarFondo(filaPiezaCaso,columnaPiezaCaso);
-                permiso = false;
-                sincronizar(filaTrabajando,columnaTrabajando);
-                turno++;
+        }
+    }
+
+    private boolean GameOver(){
+        boolean reyBlancoVivo = false, reyNegroVivo = false;
+        for(int i = 0; i < 8; i ++){
+            for(int j = 0; j < 8; j++){
+                if(pixeles[i][j]=='R'){
+                    reyBlancoVivo = true;
+                }
+                if(pixeles[i][j]=='Y'){
+                    reyNegroVivo = true;
+                }
+                if(reyBlancoVivo && reyNegroVivo)
+                    break;
             }
+            if(reyBlancoVivo && reyNegroVivo)
+                break;
         }
 
+        if(!reyBlancoVivo){
+            ganador = 2;
+            return true;
+        }else if(!reyNegroVivo){
+            ganador = 1;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private boolean turnoCorrecto(){
@@ -863,7 +936,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void deseleccionar(){
-
+        /*
         System.out.println("");
         System.out.println("TESTEO VISUALIZACION DE LA MATRIZ PIXELES EN EL METODO -deseleccionar-");
         System.out.println("");
@@ -873,6 +946,7 @@ public class GameActivity extends AppCompatActivity {
             }
             System.out.println("");
         }
+         */
 /*
         if(caso == 'T'){
             TBselec = false;
@@ -1245,7 +1319,7 @@ public class GameActivity extends AppCompatActivity {
 
         //Posibilidad Torres
 
-        if(caso == 'T' || caso == 'Q'){
+        if((caso == 'T' || caso == 'Q') || (caso == 'r' || caso == 'y')){
             /*if(hayAliado(filaSolicitud,columnaSolicitud))
                 return false;*/
             if(filaSolicitud == filaPieza || columnaSolicitud == columnaPieza){
@@ -1280,7 +1354,8 @@ public class GameActivity extends AppCompatActivity {
                     return true;
                 }
             }
-            return false;
+            //return false; ESTA COMENTADO PARA QUE SI LA REINA ENTRA, PERO EL MOVIMIENTO BUSCADO ES DIAGONAL, NO RETORNE FALSE Y AVANCE HASTA EL CODIGO DE LOS ALFILES
+
         }
 
         //Posibilidad Caballos
@@ -1297,7 +1372,7 @@ public class GameActivity extends AppCompatActivity {
 
         //Posibilidad Alfiles
 
-        if(caso == 'A' || caso == 'E'){
+        if((caso == 'A' || caso == 'E') || (caso == 'r' || caso == 'y')){
             if(filaSolicitud != filaPieza && columnaSolicitud != columnaPieza){
                 if(filaSolicitud > filaPieza && columnaSolicitud > columnaPieza){
                     for(int i = filaPieza+1, j = columnaPieza+1; i < filaSolicitud && j < columnaSolicitud; i++, j++){
@@ -1329,6 +1404,20 @@ public class GameActivity extends AppCompatActivity {
                     }
                     return true;
                 }
+            }
+            return false;
+        }
+
+        //Posibilidad Reina
+
+        //Ya esta integrada tanto en el codigo de las torres como de los alfiles
+
+        //Posibilidad Rey
+
+        if(caso == 'R' || caso == 'Y'){
+
+            if(((filaSolicitud == filaPieza || filaSolicitud == filaPieza+1 || filaSolicitud == filaPieza-1) && (columnaSolicitud == columnaPieza || columnaSolicitud == columnaPieza+1 || columnaSolicitud == columnaPieza-1))){
+                return true;
             }
             return false;
         }
