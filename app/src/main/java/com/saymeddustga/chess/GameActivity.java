@@ -132,10 +132,6 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        /*for(int i = 0; i < seleccionado.length;i++){
-            seleccionado[i] = false;
-        }*/
-
         imageViews[7][0] = findViewById(R.id.imageViewA1);
         imageViews[7][1] = findViewById(R.id.imageViewB1);
         imageViews[7][2] = findViewById(R.id.imageViewC1);
@@ -210,7 +206,6 @@ public class GameActivity extends AppCompatActivity {
                     caso = buscarCaso(7,0);
                     if(caso != 'b') {
                         imageViews[7][0].setBackgroundColor(Color.WHITE);
-                        //movimientoDisponible(caso);
                     }
                 }else if(filaPiezaCaso == 7 && columnaPiezaCaso == 0){
                     pintarFondo(7,0);
@@ -237,7 +232,6 @@ public class GameActivity extends AppCompatActivity {
                     caso = buscarCaso(6,0);
                     if(caso != 'b') {
                         imageViews[6][0].setBackgroundColor(Color.WHITE);
-                        //movimientoDisponible(caso);
                     }
                 }else if(filaPiezaCaso == 6 && columnaPiezaCaso == 0){
                     pintarFondo(6,0);
@@ -264,7 +258,6 @@ public class GameActivity extends AppCompatActivity {
                     caso = buscarCaso(6,1);
                     if(caso != 'b') {
                         imageViews[6][1].setBackgroundColor(Color.WHITE);
-                        //movimientoDisponible(caso);
                     }
                 }else if(filaPiezaCaso == 6 && columnaPiezaCaso == 1){
                     pintarFondo(6,1);
@@ -291,7 +284,6 @@ public class GameActivity extends AppCompatActivity {
                     caso = buscarCaso(6,2);
                     if(caso != 'b') {
                         imageViews[6][2].setBackgroundColor(Color.WHITE);
-                        //movimientoDisponible(caso);
                     }
                 }else if(filaPiezaCaso == 6 && columnaPiezaCaso == 2){
                     pintarFondo(6,2);
@@ -318,7 +310,6 @@ public class GameActivity extends AppCompatActivity {
                     caso = buscarCaso(6,3);
                     if(caso != 'b') {
                         imageViews[6][3].setBackgroundColor(Color.WHITE);
-                        //movimientoDisponible(caso);
                     }
                 }else if(filaPiezaCaso == 6 && columnaPiezaCaso == 3){
                     pintarFondo(6,3);
@@ -345,7 +336,6 @@ public class GameActivity extends AppCompatActivity {
                     caso = buscarCaso(5,0);
                     if(caso != 'b') {
                         imageViews[5][0].setBackgroundColor(Color.WHITE);
-                        //movimientoDisponible(caso);
                     }
                 }else if(filaPiezaCaso == 5 && columnaPiezaCaso == 0){
                     pintarFondo(5,0);
@@ -372,7 +362,6 @@ public class GameActivity extends AppCompatActivity {
                     caso = buscarCaso(5,1);
                     if(caso != 'b') {
                         imageViews[5][1].setBackgroundColor(Color.WHITE);
-                        //movimientoDisponible(caso);
                     }
                 }else if(filaPiezaCaso == 5 && columnaPiezaCaso == 1){
                     pintarFondo(5,1);
@@ -399,7 +388,6 @@ public class GameActivity extends AppCompatActivity {
                     caso = buscarCaso(5,2);
                     if(caso != 'b') {
                         imageViews[5][2].setBackgroundColor(Color.WHITE);
-                        //movimientoDisponible(caso);
                     }
                 }else if(filaPiezaCaso == 5 && columnaPiezaCaso == 2){
                     pintarFondo(5,2);
@@ -426,7 +414,6 @@ public class GameActivity extends AppCompatActivity {
                     caso = buscarCaso(4,0);
                     if(caso != 'b') {
                         imageViews[4][0].setBackgroundColor(Color.WHITE);
-                        //movimientoDisponible(caso);
                     }
                 }else if(filaPiezaCaso == 4 && columnaPiezaCaso == 0){
                     pintarFondo(4,0);
@@ -453,7 +440,6 @@ public class GameActivity extends AppCompatActivity {
                     caso = buscarCaso(4,1);
                     if(caso != 'b') {
                         imageViews[4][1].setBackgroundColor(Color.WHITE);
-                        //movimientoDisponible(caso);
                     }
                 }else if(filaPiezaCaso == 4 && columnaPiezaCaso == 1){
                     pintarFondo(4,1);
@@ -600,47 +586,7 @@ public class GameActivity extends AppCompatActivity {
         return pixeles[fila][columna];
     }
 
-    /*private void movimientoDisponible(char ocasion){
-        if(ocasion == 'T'){
-            filaPiezaCaso = TB1Fila;
-            columnaPiezaCaso = TB1Columna;
-            TBselec = true;
-        }
-        if(ocasion == 'P'){
-            //filaPiezaCaso = PB1Fila;
-            //columnaPiezaCaso = PB1Columna;
-            //PBselec = true;
-            if(filaPiezaCaso == PB1Fila && columnaPiezaCaso == PB1Columna) {
-                filaPiezaCaso = PB1Fila;
-                columnaPiezaCaso = PB1Columna;
-            }else if(filaPiezaCaso == PB2Fila && columnaPiezaCaso == PB2Columna) {
-                filaPiezaCaso = PB2Fila;
-                columnaPiezaCaso = PB2Columna;
-            }else if(filaPiezaCaso == PB3Fila && columnaPiezaCaso == PB3Columna) {
-                filaPiezaCaso = PB3Fila;
-                columnaPiezaCaso = PB3Columna;
-            }else if(filaPiezaCaso == PB4Fila && columnaPiezaCaso == PB4Columna) {
-                filaPiezaCaso = PB4Fila;
-                columnaPiezaCaso = PB4Columna;
-            }else if(filaPiezaCaso == PB5Fila && columnaPiezaCaso == PB5Columna) {
-                filaPiezaCaso = PB5Fila;
-                columnaPiezaCaso = PB5Columna;
-            }else if(filaPiezaCaso == PB6Fila && columnaPiezaCaso == PB6Columna) {
-                filaPiezaCaso = PB6Fila;
-                columnaPiezaCaso = PB6Columna;
-            }else if(filaPiezaCaso == PB7Fila && columnaPiezaCaso == PB7Columna) {
-                filaPiezaCaso = PB7Fila;
-                columnaPiezaCaso = PB7Columna;
-            }else if(filaPiezaCaso == PB8Fila && columnaPiezaCaso == PB8Columna) {
-                filaPiezaCaso = PB8Fila;
-                columnaPiezaCaso = PB8Columna;
-            }
-            PBselec = true;
-        }
-    }*/
-
     private boolean posibilidad(int filaPieza, int columnaPieza, int filaSolicitud, int columnaSolicitud){
-        //return true;
         if(caso == 'T' || caso == 't'){
             if(hayAliado(filaSolicitud,columnaSolicitud))
                 return false;
