@@ -112,13 +112,13 @@ public class GameActivity extends AppCompatActivity {
     //Rey y Reina
 
     //Rey Blanco:
-    private int KB1Fila = 7;
-    private int KB1Columna = 2;
+    private int KBFila = 7;
+    private int KBColumna = 2;
     //private boolean KBselec = false;
 
     //reina Blanco:
-    private int QB2Fila = 7;
-    private int QB2Columna = 5;
+    private int QBFila = 7;
+    private int QBColumna = 5;
     //private boolean QBselec = false;
 
     //Negros
@@ -207,13 +207,13 @@ public class GameActivity extends AppCompatActivity {
     //Rey y Reina
 
     //Rey Negro:
-    private int KN1Fila = 0;
-    private int KN1Columna = 2;
+    private int KNFila = 0;
+    private int KNColumna = 2;
     //private boolean KNselec = false;
 
     //reina Negro:
-    private int QN2Fila = 0;
-    private int QN2Columna = 5;
+    private int QNFila = 0;
+    private int QNColumna = 5;
     //private boolean QNselec = false;
 
     private boolean piezaSeleccionadaGeneral = false;
@@ -900,6 +900,9 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void sincronizar(int filaMod, int columnaMod) {
+
+        //Sincronizacion Torres
+
         if(caso == 'T'){
             if(TB1Fila == filaPiezaCaso && columnaPiezaCaso == TB1Columna) {
                 TB1Fila = filaMod;
@@ -924,6 +927,93 @@ public class GameActivity extends AppCompatActivity {
             imageViews[filaMod][columnaMod].setImageResource(R.drawable.tower_negra);
             imageViews[filaPiezaCaso][columnaPiezaCaso].setImageResource(R.drawable.vacio);
         }
+
+        //Sincronizacion Caballos
+
+        if(caso == 'C'){
+            if(CB1Fila == filaPiezaCaso && columnaPiezaCaso == CB1Columna) {
+                CB1Fila = filaMod;
+                CB1Columna = columnaMod;
+            }else if(filaPiezaCaso == CB2Fila && columnaPiezaCaso == CB2Columna) {
+                CB2Fila = filaMod;
+                CB2Columna = columnaMod;
+            }
+            imageViews[filaMod][columnaMod].setImageResource(R.drawable.caballo_blanca);
+            imageViews[filaPiezaCaso][columnaPiezaCaso].setImageResource(R.drawable.vacio);
+        }else if(caso == 'W'){
+            if(CN1Fila == filaPiezaCaso && columnaPiezaCaso == CN1Columna) {
+                CN1Fila = filaMod;
+                CN1Columna = columnaMod;
+            }else if(filaPiezaCaso == CN2Fila && columnaPiezaCaso == CN2Columna) {
+                CN2Fila = filaMod;
+                CN2Columna = columnaMod;
+            }
+            imageViews[filaMod][columnaMod].setImageResource(R.drawable.caballo_negra);
+            imageViews[filaPiezaCaso][columnaPiezaCaso].setImageResource(R.drawable.vacio);
+        }
+
+        //Sincronizacion Alfiles
+
+        if(caso == 'A'){
+            if(AB1Fila == filaPiezaCaso && columnaPiezaCaso == AB1Columna) {
+                AB1Fila = filaMod;
+                AB1Columna = columnaMod;
+            }else if(filaPiezaCaso == AB2Fila && columnaPiezaCaso == AB2Columna) {
+                AB2Fila = filaMod;
+                AB2Columna = columnaMod;
+            }
+            imageViews[filaMod][columnaMod].setImageResource(R.drawable.alfil_blanca);
+            imageViews[filaPiezaCaso][columnaPiezaCaso].setImageResource(R.drawable.vacio);
+        }else if(caso == 'E'){
+            if(AN1Fila == filaPiezaCaso && columnaPiezaCaso == AN1Columna) {
+                AN1Fila = filaMod;
+                AN1Columna = columnaMod;
+            }else if(filaPiezaCaso == AN2Fila && columnaPiezaCaso == AN2Columna) {
+                AN2Fila = filaMod;
+                AN2Columna = columnaMod;
+            }
+            imageViews[filaMod][columnaMod].setImageResource(R.drawable.alfil_negra);
+            imageViews[filaPiezaCaso][columnaPiezaCaso].setImageResource(R.drawable.vacio);
+        }
+
+        //Sincronizacion Reina
+
+        if(caso == 'r'){
+            if(QBFila == filaPiezaCaso && columnaPiezaCaso == QBColumna) {
+                QBFila = filaMod;
+                QBColumna = columnaMod;
+            }
+            imageViews[filaMod][columnaMod].setImageResource(R.drawable.reina_blanca);
+            imageViews[filaPiezaCaso][columnaPiezaCaso].setImageResource(R.drawable.vacio);
+        }else if(caso == 'y'){
+            if(QNFila == filaPiezaCaso && columnaPiezaCaso == QNColumna) {
+                QNFila = filaMod;
+                QNColumna = columnaMod;
+            }
+            imageViews[filaMod][columnaMod].setImageResource(R.drawable.reina_negra);
+            imageViews[filaPiezaCaso][columnaPiezaCaso].setImageResource(R.drawable.vacio);
+        }
+
+        //Sincronizacion Rey
+
+        if(caso == 'R'){
+            if(KBFila == filaPiezaCaso && columnaPiezaCaso == KBColumna) {
+                KBFila = filaMod;
+                KBColumna = columnaMod;
+            }
+            imageViews[filaMod][columnaMod].setImageResource(R.drawable.rey_blanca);
+            imageViews[filaPiezaCaso][columnaPiezaCaso].setImageResource(R.drawable.vacio);
+        }else if(caso == 'Y'){
+            if(KNFila == filaPiezaCaso && columnaPiezaCaso == KNColumna) {
+                KNFila = filaMod;
+                KNColumna = columnaMod;
+            }
+            imageViews[filaMod][columnaMod].setImageResource(R.drawable.rey_negra);
+            imageViews[filaPiezaCaso][columnaPiezaCaso].setImageResource(R.drawable.vacio);
+        }
+
+        //Sincronizacion Peones
+
         if(caso == 'P'){
             if(filaPiezaCaso == PB1Fila && columnaPiezaCaso == PB1Columna) {
                 PB1Fila = filaMod;
@@ -989,6 +1079,8 @@ public class GameActivity extends AppCompatActivity {
 
         char ocasion = pixeles[fila][columna];
 
+        //Caso Torre
+
         if(ocasion == 'T'){
             if(TB1Fila == fila && columna == TB1Columna) {
                 filaPiezaCaso = TB1Fila;
@@ -1009,6 +1101,77 @@ public class GameActivity extends AppCompatActivity {
                 columnaPiezaCaso = TN2Columna;
             }
         }
+
+        //Caso Caballo
+
+        if(ocasion == 'C'){
+            if(CB1Fila == fila && columna == CB1Columna) {
+                filaPiezaCaso = CB1Fila;
+                columnaPiezaCaso = CB1Columna;
+            }else if(fila == CB2Fila && columna == CB2Columna) {
+                filaPiezaCaso = CB2Fila;
+                columnaPiezaCaso = CB2Columna;
+            }
+        }else if(ocasion == 'W'){
+            if(CN1Fila == fila && columna == CN1Columna) {
+                filaPiezaCaso = CN1Fila;
+                columnaPiezaCaso = CN1Columna;
+            }else if(fila == CN2Fila && columna == CN2Columna) {
+                filaPiezaCaso = CN2Fila;
+                columnaPiezaCaso = CN2Columna;
+            }
+        }
+
+        //Caso Alfil
+
+        if(ocasion == 'A'){
+            if(AB1Fila == fila && columna == AB1Columna) {
+                filaPiezaCaso = AB1Fila;
+                columnaPiezaCaso = AB1Columna;
+            }else if(fila == AB2Fila && columna == AB2Columna) {
+                filaPiezaCaso = AB2Fila;
+                columnaPiezaCaso = AB2Columna;
+            }
+        }else if(ocasion == 'E'){
+            if(AN1Fila == fila && columna == AN1Columna) {
+                filaPiezaCaso = AN1Fila;
+                columnaPiezaCaso = AN1Columna;
+            }else if(fila == AN2Fila && columna == AN2Columna) {
+                filaPiezaCaso = AN2Fila;
+                columnaPiezaCaso = AN2Columna;
+            }
+        }
+
+        //Caso Reina
+
+        if(ocasion == 'r'){
+            if(QBFila == fila && columna == QBColumna) {
+                filaPiezaCaso = QBFila;
+                columnaPiezaCaso = QBColumna;
+            }
+        }else if(ocasion == 'y'){
+            if(QNFila == fila && columna == QNColumna) {
+                filaPiezaCaso = QNFila;
+                columnaPiezaCaso = QNColumna;
+            }
+        }
+
+        //Caso Rey
+
+        if(ocasion == 'R'){
+            if(KBFila == fila && columna == KBColumna) {
+                filaPiezaCaso = KBFila;
+                columnaPiezaCaso = KBColumna;
+            }
+        }else if(ocasion == 'Y'){
+            if(KNFila == fila && columna == KNColumna) {
+                filaPiezaCaso = KNFila;
+                columnaPiezaCaso = KNColumna;
+            }
+        }
+
+        //Caso Peones
+
         if(ocasion == 'P'){
             if(PB1Fila == fila && columna == PB1Columna) {
                 filaPiezaCaso = PB1Fila;
@@ -1062,7 +1225,6 @@ public class GameActivity extends AppCompatActivity {
                 filaPiezaCaso = PN8Fila;
                 columnaPiezaCaso = PN8Columna;
             }
-            //PBselec = true;
         }
 
         if(ocasion != 'b')
@@ -1080,6 +1242,8 @@ public class GameActivity extends AppCompatActivity {
 
         /*if(hayEnemigo(filaSolicitud,columnaSolicitud))
             excepcion = true;*/
+
+        //Posibilidad Torres
 
         if(caso == 'T' || caso == 'Q'){
             /*if(hayAliado(filaSolicitud,columnaSolicitud))
@@ -1118,6 +1282,59 @@ public class GameActivity extends AppCompatActivity {
             }
             return false;
         }
+
+        //Posibilidad Caballos
+
+        if(caso == 'C' || caso == 'W'){
+            if((filaSolicitud == filaPieza+2 && (columnaSolicitud == columnaPieza-1 || columnaSolicitud == columnaPieza+1))
+            || (filaSolicitud == filaPieza-2 && (columnaSolicitud == columnaPieza-1 || columnaSolicitud == columnaPieza+1))
+            || (columnaSolicitud == columnaPieza+2 && (filaSolicitud == filaPieza-1 || filaSolicitud == filaPieza+1))
+            || (columnaSolicitud == columnaPieza-2 && (filaSolicitud == filaPieza-1 || filaSolicitud == filaPieza+1))){
+                return true;
+            }
+            return false;
+        }
+
+        //Posibilidad Alfiles
+
+        if(caso == 'A' || caso == 'E'){
+            if(filaSolicitud != filaPieza && columnaSolicitud != columnaPieza){
+                if(filaSolicitud > filaPieza && columnaSolicitud > columnaPieza){
+                    for(int i = filaPieza+1, j = columnaPieza+1; i < filaSolicitud && j < columnaSolicitud; i++, j++){
+                        if(hayAliado(i,j) || hayEnemigo(i,j)){
+                            return false;
+                        }
+                    }
+                    return true;
+                } else if(filaSolicitud > filaPieza && columnaSolicitud < columnaPieza){
+                    for(int i = filaPieza+1, j = columnaPieza-1; i < filaSolicitud && j > columnaSolicitud; i++, j--){
+                        if(hayAliado(i,j) || hayEnemigo(i,j)){
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+                if(filaSolicitud < filaPieza && columnaSolicitud > columnaPieza){
+                    for(int i = filaPieza-1, j = columnaPieza+1; i > filaSolicitud && j < columnaSolicitud; i--, j++){
+                        if(hayAliado(i,j) || hayEnemigo(i,j)){
+                            return false;
+                        }
+                    }
+                    return true;
+                } else if(columnaSolicitud < columnaPieza  && columnaSolicitud < columnaPieza){
+                    for(int i = filaPieza-1, j = columnaPieza-1; i > filaSolicitud && j > columnaSolicitud; i--, j--){
+                        if(hayAliado(i,j) || hayEnemigo(i,j)){
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        //Posibilidad Peones
+
         if(caso == 'P'){
 
             if((filaPieza == PB1Fila && columnaPieza == PB1Columna) && (!PB1PrimerMovimiento && filaSolicitud == filaPieza-2)
