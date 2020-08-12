@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -282,6 +283,33 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
+        //Coordenada A4
+        imageViews[4][0].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(TBselec == false && PBselec == false){
+                    caso = buscarCaso(4,0);
+                    if(caso != 'b') {
+                        imageViews[4][0].setBackgroundColor(Color.WHITE);
+                        movimientoDisponible(caso);
+                    }
+                }else if(filaPiezaCaso == 4 && columnaPiezaCaso == 0){
+                    pintarFondo(4,0);
+                    deseleccionar();
+                } else if(filaPiezaCaso != 4 || columnaPiezaCaso != 0){
+                    permiso = posibilidad(filaPiezaCaso, columnaPiezaCaso,4,0);
+                    if(permiso){
+                        char aux = pixeles[filaPiezaCaso][columnaPiezaCaso];
+                        pixeles[filaPiezaCaso][columnaPiezaCaso] = 'b';
+                        pixeles[4][0] = aux;
+                        pintarFondo(filaPiezaCaso,columnaPiezaCaso);
+                        permiso = false;
+                        sincronizar(4,0);
+                    }
+                }
+            }
+        });
+
 
     }
 
@@ -383,8 +411,38 @@ public class GameActivity extends AppCompatActivity {
             if(hayAliado(filaSolicitud,columnaSolicitud))
                 return false;
             if(filaSolicitud == filaPieza || columnaSolicitud == columnaPieza){
-                return true;
+                if(filaSolicitud > filaPieza){
+                    for(int i = filaPieza+1; i < filaSolicitud; i++){
+                        if(hayAliado(i,columnaPieza) || hayEnemigo(i,columnaPieza)){
+                            return false;
+                        }
+                    }
+                    return true;
+                } else if(filaSolicitud < filaPieza){
+                    for(int i = filaPieza-1; i > filaSolicitud; i--){
+                        if(pixeles[i][columnaPieza] != 'b'){
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+                if(columnaSolicitud > columnaPieza){
+                    for(int i = columnaPieza+1; i < columnaSolicitud; i++){
+                        if(hayAliado(filaPieza,i) || hayEnemigo(filaPieza,i)){
+                            return false;
+                        }
+                    }
+                    return true;
+                } else if(columnaPieza < columnaPieza){
+                    for(int i = columnaPieza-1; i > columnaPieza; i--){
+                        if(hayAliado(filaPieza,i) || hayEnemigo(filaPieza,i)){
+                            return false;
+                        }
+                    }
+                    return true;
+                }
             }
+            return false;
         }
         if(caso == 'P'){
             if(hayAliado(filaSolicitud,columnaSolicitud))
