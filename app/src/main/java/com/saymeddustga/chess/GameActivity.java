@@ -485,7 +485,9 @@ public class GameActivity extends AppCompatActivity {
 
     private void deseleccionar(){
 
-        System.out.println("\n\nSEPARACION\n");
+        System.out.println("");
+        System.out.println("TESTEO VISUALIZACION DE LA MATRIZ PIXELES EN EL METODO -deseleccionar-");
+        System.out.println("");
         for(int i = 0; i<8; i++){
             for(int j = 0; j < 8; j++){
                 System.out.print(pixeles[i][j]+" ");
@@ -640,8 +642,6 @@ public class GameActivity extends AppCompatActivity {
     private boolean posibilidad(int filaPieza, int columnaPieza, int filaSolicitud, int columnaSolicitud){
         //return true;
         if(caso == 'T' || caso == 't'){
-            int aux1 = filaPieza;
-            int aux2 = columnaPieza;
             if(hayAliado(filaSolicitud,columnaSolicitud))
                 return false;
             if(filaSolicitud == filaPieza || columnaSolicitud == columnaPieza){
@@ -667,8 +667,8 @@ public class GameActivity extends AppCompatActivity {
                         }
                     }
                     return true;
-                } else if(columnaPieza < columnaPieza){
-                    for(int i = columnaPieza-1; i > columnaPieza; i--){
+                } else if(columnaSolicitud < columnaPieza){
+                    for(int i = columnaPieza-1; i > columnaSolicitud; i--){
                         if(hayAliado(filaPieza,i) || hayEnemigo(filaPieza,i)){
                             return false;
                         }
