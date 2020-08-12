@@ -121,12 +121,106 @@ public class GameActivity extends AppCompatActivity {
     private int QB2Columna = 5;
     //private boolean QBselec = false;
 
+    //Negros
+
+    //Peones
+
+    //Peon Negro 01:
+    private int PN1Fila = 1;
+    private int PN1Columna = 0;
+    private boolean PN1PrimerMovimiento = false;
+
+    //Peon Negro 02:
+    private int PN2Fila = 1;
+    private int PN2Columna = 1;
+    private boolean PN2PrimerMovimiento = false;
+
+    //Peon Negro 03:
+
+    private int PN3Fila = 1;
+    private int PN3Columna = 2;
+    private boolean PN3PrimerMovimiento = false;
+
+    //Peon Negro 04:
+    private int PN4Fila = 1;
+    private int PN4Columna = 3;
+    private boolean PN4PrimerMovimiento = false;
+
+    //Peon Negro 05:
+    private int PN5Fila = 1;
+    private int PN5Columna = 4;
+    private boolean PN5PrimerMovimiento = false;
+
+    //Peon Negro 06:
+    private int PN6Fila = 1;
+    private int PN6Columna = 5;
+    private boolean PN6PrimerMovimiento = false;
+
+    //Peon Negro 07:
+    private int PN7Fila = 1;
+    private int PN7Columna = 6;
+    private boolean PN7PrimerMovimiento = false;
+
+    //Peon Negro 08:
+    private int PN8Fila = 1;
+    private int PN8Columna = 7;
+    private boolean PN8PrimerMovimiento = false;
+
+    //private boolean PNselec = false;
+
+    //Torres
+
+    //Tower Negro 01:
+    private int TN1Fila = 0;
+    private int TN1Columna = 0;
+
+    //Tower Negro 02:
+    private int TN2Fila = 0;
+    private int TN2Columna = 7;
+
+    //private boolean TNselec = false;
+
+    //Caballos
+
+    //Caballo Negro 01:
+    private int CN1Fila = 0;
+    private int CN1Columna = 1;
+
+    //Caballo Negro 02:
+    private int CN2Fila = 0;
+    private int CN2Columna = 6;
+
+    //private boolean CNselec = false;
+
+    //Alfiles
+
+    //Alfil Negro 01:
+    private int AN1Fila = 0;
+    private int AN1Columna = 2;
+
+    //Alfil Negro 02:
+    private int AN2Fila = 0;
+    private int AN2Columna = 5;
+
+    //private boolean ANselec = false;
+
+    //Rey y Reina
+
+    //Rey Negro:
+    private int KN1Fila = 0;
+    private int KN1Columna = 2;
+    //private boolean KNselec = false;
+
+    //reina Negro:
+    private int QN2Fila = 0;
+    private int QN2Columna = 5;
+    //private boolean QNselec = false;
+
     private boolean piezaSeleccionadaGeneral = false;
 
+    private int turno = 1;
 
     private ImageView[][] imageViews = new ImageView[8][8];
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -723,7 +817,12 @@ public class GameActivity extends AppCompatActivity {
         if(piezaSeleccionadaGeneral == false){
             caso = buscarCaso(filaTrabajando,columnaTrabajando);
             if(caso != 'b') {
-                imageViews[filaTrabajando][columnaTrabajando].setBackgroundColor(Color.WHITE);
+                if(turnoCorrecto()) {
+                    imageViews[filaTrabajando][columnaTrabajando].setBackgroundColor(Color.WHITE);
+                }else {
+                    Toast.makeText(GameActivity.this,"No es tu turno",Toast.LENGTH_LONG).show();
+                    deseleccionar();
+                }
             }
         }else if(filaPiezaCaso == filaTrabajando && columnaPiezaCaso == columnaTrabajando){
             pintarFondo(filaTrabajando,columnaTrabajando);
@@ -737,9 +836,22 @@ public class GameActivity extends AppCompatActivity {
                 pintarFondo(filaPiezaCaso,columnaPiezaCaso);
                 permiso = false;
                 sincronizar(filaTrabajando,columnaTrabajando);
+                turno++;
             }
         }
 
+    }
+
+    private boolean turnoCorrecto(){
+        if((caso == 'T' || caso == 'C' || caso == 'A'
+                || caso == 'R' || caso == 'r' || caso == 'P') && turno%2 != 0){
+            return true;
+        }else if((caso == 'Q' || caso == 'W' || caso == 'E'
+                || caso == 'Y' || caso == 'y' || caso == 'p') && turno%2 == 0){
+            return true;
+        } else{
+            return false;
+        }
     }
 
     private void pintarFondo(int fila, int columna){
@@ -801,6 +913,16 @@ public class GameActivity extends AppCompatActivity {
             imageViews[filaMod][columnaMod].setImageResource(R.drawable.tower_blanca);
             imageViews[filaPiezaCaso][columnaPiezaCaso].setImageResource(R.drawable.vacio);
             //TBselec = false;
+        }else if(caso == 'Q'){
+            if(TN1Fila == filaPiezaCaso && columnaPiezaCaso == TN1Columna) {
+                TN1Fila = filaMod;
+                TN1Columna = columnaMod;
+            }else if(filaPiezaCaso == TN2Fila && columnaPiezaCaso == TN2Columna) {
+                TN2Fila = filaMod;
+                TN2Columna = columnaMod;
+            }
+            imageViews[filaMod][columnaMod].setImageResource(R.drawable.tower_negra);
+            imageViews[filaPiezaCaso][columnaPiezaCaso].setImageResource(R.drawable.vacio);
         }
         if(caso == 'P'){
             if(filaPiezaCaso == PB1Fila && columnaPiezaCaso == PB1Columna) {
@@ -831,6 +953,34 @@ public class GameActivity extends AppCompatActivity {
             imageViews[filaMod][columnaMod].setImageResource(R.drawable.peon_blanca);
             imageViews[filaPiezaCaso][columnaPiezaCaso].setImageResource(R.drawable.vacio);
             //PBselec = false;
+        }else if(caso == 'p'){
+            if(filaPiezaCaso == PN1Fila && columnaPiezaCaso == PN1Columna) {
+                PN1Fila = filaMod;
+                PN1Columna = columnaMod;
+            }else if(filaPiezaCaso == PN2Fila && columnaPiezaCaso == PN2Columna) {
+                PN2Fila = filaMod;
+                PN2Columna = columnaMod;
+            }else if(filaPiezaCaso == PN3Fila && columnaPiezaCaso == PN3Columna) {
+                PN3Fila = filaMod;
+                PN3Columna = columnaMod;
+            }else if(filaPiezaCaso == PN4Fila && columnaPiezaCaso == PN4Columna) {
+                PN4Fila = filaMod;
+                PN4Columna = columnaMod;
+            }else if(filaPiezaCaso == PN5Fila && columnaPiezaCaso == PN5Columna) {
+                PN5Fila = filaMod;
+                PN5Columna = columnaMod;
+            }else if(filaPiezaCaso == PN6Fila && columnaPiezaCaso == PN6Columna) {
+                PN6Fila = filaMod;
+                PN6Columna = columnaMod;
+            }else if(filaPiezaCaso == PN7Fila && columnaPiezaCaso == PN7Columna) {
+                PN7Fila = filaMod;
+                PN7Columna = columnaMod;
+            }else if(filaPiezaCaso == PN8Fila && columnaPiezaCaso == PN8Columna) {
+                PN8Fila = filaMod;
+                PN8Columna = columnaMod;
+            }
+            imageViews[filaMod][columnaMod].setImageResource(R.drawable.peon_negra);
+            imageViews[filaPiezaCaso][columnaPiezaCaso].setImageResource(R.drawable.vacio);
         }
         piezaSeleccionadaGeneral = false;
     }
@@ -850,6 +1000,14 @@ public class GameActivity extends AppCompatActivity {
             /*filaPiezaCaso = TB1Fila;
             columnaPiezaCaso = TB1Columna;*/
             //TBselec = true;
+        }else if(ocasion == 'Q'){
+            if(TN1Fila == fila && columna == TN1Columna) {
+                filaPiezaCaso = TN1Fila;
+                columnaPiezaCaso = TN1Columna;
+            }else if(fila == TN2Fila && columna == TN2Columna) {
+                filaPiezaCaso = TN2Fila;
+                columnaPiezaCaso = TN2Columna;
+            }
         }
         if(ocasion == 'P'){
             if(PB1Fila == fila && columna == PB1Columna) {
@@ -878,6 +1036,33 @@ public class GameActivity extends AppCompatActivity {
                 columnaPiezaCaso = PB8Columna;
             }
             //PBselec = true;
+        }else if(ocasion == 'p'){
+            if(PN1Fila == fila && columna == PN1Columna) {
+                filaPiezaCaso = PN1Fila;
+                columnaPiezaCaso = PN1Columna;
+            }else if(fila == PN2Fila && columna == PN2Columna) {
+                filaPiezaCaso = PN2Fila;
+                columnaPiezaCaso = PN2Columna;
+            }else if(fila == PN3Fila && columna == PN3Columna) {
+                filaPiezaCaso = PN3Fila;
+                columnaPiezaCaso = PN3Columna;
+            }else if(fila == PN4Fila && columna == PN4Columna) {
+                filaPiezaCaso = PN4Fila;
+                columnaPiezaCaso = PN4Columna;
+            }else if(fila == PN5Fila && columna == PN5Columna) {
+                filaPiezaCaso = PN5Fila;
+                columnaPiezaCaso = PN5Columna;
+            }else if(fila == PN6Fila && columna == PN6Columna) {
+                filaPiezaCaso = PN6Fila;
+                columnaPiezaCaso = PN6Columna;
+            }else if(fila == PN7Fila && columna == PN7Columna) {
+                filaPiezaCaso = PN7Fila;
+                columnaPiezaCaso = PN7Columna;
+            }else if(fila == PN8Fila && columna == PN8Columna) {
+                filaPiezaCaso = PN8Fila;
+                columnaPiezaCaso = PN8Columna;
+            }
+            //PBselec = true;
         }
 
         if(ocasion != 'b')
@@ -896,7 +1081,7 @@ public class GameActivity extends AppCompatActivity {
         /*if(hayEnemigo(filaSolicitud,columnaSolicitud))
             excepcion = true;*/
 
-        if(caso == 'T'){
+        if(caso == 'T' || caso == 'Q'){
             /*if(hayAliado(filaSolicitud,columnaSolicitud))
                 return false;*/
             if(filaSolicitud == filaPieza || columnaSolicitud == columnaPieza){
@@ -1008,22 +1193,111 @@ public class GameActivity extends AppCompatActivity {
                 }
                 return true;
             }
+        }else if(caso == 'p'){
+
+            if((filaPieza == PN1Fila && columnaPieza == PN1Columna) && (!PN1PrimerMovimiento && filaSolicitud == filaPieza+2)
+                    && (pixeles[filaSolicitud][columnaSolicitud] == 'b' && pixeles[filaSolicitud-1][columnaSolicitud] == 'b')){
+                PN1PrimerMovimiento = true;
+                return true;
+            }else if((filaPieza == PN2Fila && columnaPieza == PN2Columna) && (!PN2PrimerMovimiento && filaSolicitud == filaPieza+2)
+                    && (pixeles[filaSolicitud][columnaSolicitud] == 'b' && pixeles[filaSolicitud-1][columnaSolicitud] == 'b')){
+                PN2PrimerMovimiento = true;
+                return true;
+            }else if((filaPieza == PN3Fila && columnaPieza == PN3Columna) && (!PN3PrimerMovimiento && filaSolicitud == filaPieza+2)
+                    && (pixeles[filaSolicitud][columnaSolicitud] == 'b' && pixeles[filaSolicitud-1][columnaSolicitud] == 'b')){
+                PN3PrimerMovimiento = true;
+                return true;
+            }else if((filaPieza == PN4Fila && columnaPieza == PN4Columna) && (!PN4PrimerMovimiento && filaSolicitud == filaPieza+2)
+                    && (pixeles[filaSolicitud][columnaSolicitud] == 'b' && pixeles[filaSolicitud-1][columnaSolicitud] == 'b')){
+                PN4PrimerMovimiento = true;
+                return true;
+            }else if((filaPieza == PN5Fila && columnaPieza == PN5Columna) && (!PN5PrimerMovimiento && filaSolicitud == filaPieza+2)
+                    && (pixeles[filaSolicitud][columnaSolicitud] == 'b' && pixeles[filaSolicitud-1][columnaSolicitud] == 'b')){
+                PN5PrimerMovimiento = true;
+                return true;
+            }else if((filaPieza == PN6Fila && columnaPieza == PN6Columna) && (!PN6PrimerMovimiento && filaSolicitud == filaPieza+2)
+                    && (pixeles[filaSolicitud][columnaSolicitud] == 'b' && pixeles[filaSolicitud-1][columnaSolicitud] == 'b')){
+                PN6PrimerMovimiento = true;
+                return true;
+            }else if((filaPieza == PN7Fila && columnaPieza == PN7Columna) && (!PN7PrimerMovimiento && filaSolicitud == filaPieza+2)
+                    && (pixeles[filaSolicitud][columnaSolicitud] == 'b' && pixeles[filaSolicitud-1][columnaSolicitud] == 'b')){
+                PN7PrimerMovimiento = true;
+                return true;
+            }else if((filaPieza == PN8Fila && columnaPieza == PN8Columna) && (!PN8PrimerMovimiento && filaSolicitud == filaPieza+2)
+                    && (pixeles[filaSolicitud][columnaSolicitud] == 'b' && pixeles[filaSolicitud-1][columnaSolicitud] == 'b')){
+                PN8PrimerMovimiento = true;
+                return true;
+            }
+
+            if((filaSolicitud == filaPieza+1 && columnaSolicitud == columnaPieza) && pixeles[filaSolicitud][columnaSolicitud] == 'b'){
+                if((filaPieza == PN1Fila && columnaPieza == PN1Columna) && !PN1PrimerMovimiento){
+                    PN1PrimerMovimiento = true;
+                }else if((filaPieza == PN2Fila && columnaPieza == PN2Columna) && !PN2PrimerMovimiento){
+                    PN2PrimerMovimiento = true;
+                }else if((filaPieza == PN3Fila && columnaPieza == PN3Columna) && !PN3PrimerMovimiento){
+                    PN3PrimerMovimiento = true;
+                }else if((filaPieza == PN4Fila && columnaPieza == PN4Columna) && !PN4PrimerMovimiento){
+                    PN4PrimerMovimiento = true;
+                }else if((filaPieza == PN5Fila && columnaPieza == PN5Columna) && !PN5PrimerMovimiento){
+                    PN5PrimerMovimiento = true;
+                }else if((filaPieza == PN6Fila && columnaPieza == PN6Columna) && !PN6PrimerMovimiento){
+                    PN6PrimerMovimiento = true;
+                }else if((filaPieza == PN7Fila && columnaPieza == PN7Columna) && !PN7PrimerMovimiento){
+                    PN7PrimerMovimiento = true;
+                }else if((filaPieza == PN8Fila && columnaPieza == PN8Columna) && !PN8PrimerMovimiento){
+                    PN8PrimerMovimiento = true;
+                }
+                return true;
+            }else if(filaSolicitud == filaPieza+1 && (columnaSolicitud == columnaPieza + 1 || columnaSolicitud == columnaPieza - 1) && hayEnemigo(filaSolicitud,columnaSolicitud) == true){
+                if((filaPieza == PN1Fila && columnaPieza == PN1Columna) && !PN1PrimerMovimiento){
+                    PN1PrimerMovimiento = true;
+                }else if((filaPieza == PN2Fila && columnaPieza == PN2Columna) && !PN2PrimerMovimiento){
+                    PN2PrimerMovimiento = true;
+                }else if((filaPieza == PN3Fila && columnaPieza == PN3Columna) && !PN3PrimerMovimiento){
+                    PN3PrimerMovimiento = true;
+                }else if((filaPieza == PN4Fila && columnaPieza == PN4Columna) && !PN4PrimerMovimiento){
+                    PN4PrimerMovimiento = true;
+                }else if((filaPieza == PN5Fila && columnaPieza == PN5Columna) && !PN5PrimerMovimiento){
+                    PN5PrimerMovimiento = true;
+                }else if((filaPieza == PN6Fila && columnaPieza == PN6Columna) && !PN6PrimerMovimiento){
+                    PN6PrimerMovimiento = true;
+                }else if((filaPieza == PN7Fila && columnaPieza == PN7Columna) && !PN7PrimerMovimiento){
+                    PN7PrimerMovimiento = true;
+                }else if((filaPieza == PN8Fila && columnaPieza == PN8Columna) && !PN8PrimerMovimiento){
+                    PN8PrimerMovimiento = true;
+                }
+                return true;
+            }
         }
         return false;
     }
 
     private boolean hayAliado(int fila, int columna){
-        if(pixeles[fila][columna] == 'T' || pixeles[fila][columna] == 'C' || pixeles[fila][columna] == 'A'
-                || pixeles[fila][columna] == 'R' || pixeles[fila][columna] == 'r' || pixeles[fila][columna] == 'P'){
-            return true;
+        if(turno%2 != 0) {
+            if (pixeles[fila][columna] == 'T' || pixeles[fila][columna] == 'C' || pixeles[fila][columna] == 'A'
+                    || pixeles[fila][columna] == 'R' || pixeles[fila][columna] == 'r' || pixeles[fila][columna] == 'P') {
+                return true;
+            }
+        }else{
+            if(pixeles[fila][columna] == 'Q' || pixeles[fila][columna] == 'W' || pixeles[fila][columna] == 'E'
+                    || pixeles[fila][columna] == 'Y' || pixeles[fila][columna] == 'y' || pixeles[fila][columna] == 'p'){
+                return true;
+            }
         }
         return false;
     }
 
     private boolean hayEnemigo(int fila, int columna){
-        if(pixeles[fila][columna] == 'Q' || pixeles[fila][columna] == 'W' || pixeles[fila][columna] == 'E'
-                || pixeles[fila][columna] == 'Y' || pixeles[fila][columna] == 'y' || pixeles[fila][columna] == 'p'){
-            return true;
+        if(turno%2 != 0) {
+            if (pixeles[fila][columna] == 'Q' || pixeles[fila][columna] == 'W' || pixeles[fila][columna] == 'E'
+                    || pixeles[fila][columna] == 'Y' || pixeles[fila][columna] == 'y' || pixeles[fila][columna] == 'p') {
+                return true;
+            }
+        }else{
+            if (pixeles[fila][columna] == 'T' || pixeles[fila][columna] == 'C' || pixeles[fila][columna] == 'A'
+                    || pixeles[fila][columna] == 'R' || pixeles[fila][columna] == 'r' || pixeles[fila][columna] == 'P') {
+                return true;
+            }
         }
         return false;
     }
