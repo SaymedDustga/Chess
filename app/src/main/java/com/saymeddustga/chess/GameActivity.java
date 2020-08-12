@@ -33,34 +33,42 @@ public class GameActivity extends AppCompatActivity {
     //Peon Blanco 01:
     private int PB1Fila = 6;
     private int PB1Columna = 0;
+    private boolean PB1PrimerMovimiento = false;
 
     //Peon Blanco 02:
     private int PB2Fila = 6;
     private int PB2Columna = 1;
+    private boolean PB2PrimerMovimiento = false;
 
     //Peon Blanco 03:
     private int PB3Fila = 6;
     private int PB3Columna = 2;
+    private boolean PB3PrimerMovimiento = false;
 
     //Peon Blanco 04:
     private int PB4Fila = 6;
     private int PB4Columna = 3;
+    private boolean PB4PrimerMovimiento = false;
 
     //Peon Blanco 05:
     private int PB5Fila = 6;
     private int PB5Columna = 4;
+    private boolean PB5PrimerMovimiento = false;
 
     //Peon Blanco 06:
     private int PB6Fila = 6;
     private int PB6Columna = 5;
+    private boolean PB6PrimerMovimiento = false;
 
     //Peon Blanco 07:
     private int PB7Fila = 6;
     private int PB7Columna = 6;
+    private boolean PB7PrimerMovimiento = false;
 
     //Peon Blanco 08:
     private int PB8Fila = 6;
     private int PB8Columna = 7;
+    private boolean PB8PrimerMovimiento = false;
 
     private boolean PBselec = false;
 
@@ -301,6 +309,9 @@ public class GameActivity extends AppCompatActivity {
         if(caso == 'r'){
             QBselec = false;
         }
+        if(caso == 'P'){
+            PBselec = false;
+        }
         permiso = false;
         filaPiezaCaso = 8;
         columnaPiezaCaso = 8;
@@ -353,11 +364,38 @@ public class GameActivity extends AppCompatActivity {
             }
         }
         if(caso == 'P'){
-            int aux1 = filaPieza;
-            int aux2 = columnaPieza;
             if(hayAliado(filaSolicitud,columnaSolicitud))
                 return false;
-            if(filaSolicitud == filaPieza || columnaSolicitud == columnaPieza){
+            if((filaPieza == PB1Fila && columnaPieza == PB1Columna) && (!PB1PrimerMovimiento && filaSolicitud == filaPieza-2)){
+                PB1PrimerMovimiento = true;
+                return true;
+            }else if((filaPieza == PB2Fila && columnaPieza == PB2Columna) && (!PB2PrimerMovimiento && filaSolicitud == filaPieza-2)){
+                PB2PrimerMovimiento = true;
+                return true;
+            }else if((filaPieza == PB3Fila && columnaPieza == PB3Columna) && (!PB3PrimerMovimiento && filaSolicitud == filaPieza-2)){
+                PB3PrimerMovimiento = true;
+                return true;
+            }else if((filaPieza == PB4Fila && columnaPieza == PB4Columna) && (!PB4PrimerMovimiento && filaSolicitud == filaPieza-2)){
+                PB4PrimerMovimiento = true;
+                return true;
+            }else if((filaPieza == PB5Fila && columnaPieza == PB5Columna) && (!PB5PrimerMovimiento && filaSolicitud == filaPieza-2)){
+                PB5PrimerMovimiento = true;
+                return true;
+            }else if((filaPieza == PB6Fila && columnaPieza == PB6Columna) && (!PB6PrimerMovimiento && filaSolicitud == filaPieza-2)){
+                PB6PrimerMovimiento = true;
+                return true;
+            }else if((filaPieza == PB7Fila && columnaPieza == PB7Columna) && (!PB7PrimerMovimiento && filaSolicitud == filaPieza-2)){
+                PB7PrimerMovimiento = true;
+                return true;
+            }else if((filaPieza == PB8Fila && columnaPieza == PB8Columna) && (!PB8PrimerMovimiento && filaSolicitud == filaPieza-2)){
+                PB8PrimerMovimiento = true;
+                return true;
+            }
+
+
+            if(filaSolicitud == filaPieza-1){
+                return true;
+            }else if((filaSolicitud == filaPieza-1 && (columnaSolicitud == columnaPieza + 1 || columnaSolicitud == columnaPieza - 1)) && hayEnemigo(filaSolicitud,columnaSolicitud)){
                 return true;
             }
         }
@@ -368,6 +406,15 @@ public class GameActivity extends AppCompatActivity {
         if(pixeles[fila][columna] == 'T' || pixeles[fila][columna] == 't' || pixeles[fila][columna] == 'C'
         || pixeles[fila][columna] == 'c' || pixeles[fila][columna] == 'A' || pixeles[fila][columna] == 'a'
         || pixeles[fila][columna] == 'R' || pixeles[fila][columna] == 'r' || pixeles[fila][columna] == 'P'){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean hayEnemigo(int fila, int columna){
+        if(pixeles[fila][columna] == 'Q' || pixeles[fila][columna] == 'q' || pixeles[fila][columna] == 'W'
+                || pixeles[fila][columna] == 'w' || pixeles[fila][columna] == 'E' || pixeles[fila][columna] == 'e'
+                || pixeles[fila][columna] == 'Y' || pixeles[fila][columna] == 'y' || pixeles[fila][columna] == 'p'){
             return true;
         }
         return false;
