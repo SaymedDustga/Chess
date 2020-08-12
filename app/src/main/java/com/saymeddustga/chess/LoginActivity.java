@@ -24,8 +24,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         //salto de juego mientras se testea
-        Intent test = new Intent(LoginActivity.this,GameActivity.class);
-        startActivity(test);
+        /*Intent test = new Intent(LoginActivity.this,GameActivity.class);
+        startActivity(test);*/
 
         etNick1 = findViewById(R.id.editTextNicknameP1);
         etNick2 = findViewById(R.id.editTextNicknameP2);
@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 nick1 = etNick1.getText().toString();
-                nick2 = etNick1.getText().toString();
+                nick2 = etNick2.getText().toString();
                 if(nick1.isEmpty() || nick2.isEmpty()){
                     if(nick1.isEmpty())
                         etNick1.setError("Introduzca el NickName");

@@ -1,585 +1,621 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ContenedorGeneral"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_game_beta2"
     tools:context=".GameActivity">
 
-    <ImageView
-        android:id="@+id/imageViewA1"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Tablero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/tower_blanca" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/imageViewB1"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageViewA1"
-        app:srcCompat="@drawable/caballo_blanca" />
 
-    <ImageView
-        android:id="@+id/imageViewC1"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageViewB1"
-        app:srcCompat="@drawable/alfil_blanca" />
+        <ImageView
+            android:id="@+id/imageViewA1"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/tower_blanca" />
 
-    <ImageView
-        android:id="@+id/imageViewD1"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageViewC1"
-        app:srcCompat="@drawable/reina_blanca" />
+        <ImageView
+            android:id="@+id/imageViewB1"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageViewA1"
+            app:srcCompat="@drawable/caballo_blanca" />
 
-    <ImageView
-        android:id="@+id/imageViewE1"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageViewD1"
-        app:srcCompat="@drawable/rey_blanca" />
+        <ImageView
+            android:id="@+id/imageViewC1"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageViewB1"
+            app:srcCompat="@drawable/alfil_blanca" />
 
-    <ImageView
-        android:id="@+id/imageViewF1"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageViewE1"
-        app:srcCompat="@drawable/alfil_blanca" />
+        <ImageView
+            android:id="@+id/imageViewD1"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageViewC1"
+            app:srcCompat="@drawable/reina_blanca" />
 
-    <ImageView
-        android:id="@+id/imageViewG1"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageViewF1"
-        app:srcCompat="@drawable/caballo_blanca" />
+        <ImageView
+            android:id="@+id/imageViewE1"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageViewD1"
+            app:srcCompat="@drawable/rey_blanca" />
 
-    <ImageView
-        android:id="@+id/imageViewH1"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageViewG1"
-        app:srcCompat="@drawable/tower_blanca" />
+        <ImageView
+            android:id="@+id/imageViewF1"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageViewE1"
+            app:srcCompat="@drawable/alfil_blanca" />
 
-    <ImageView
-        android:id="@+id/imageViewA2"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewA1"
+        <ImageView
+            android:id="@+id/imageViewG1"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageViewF1"
+            app:srcCompat="@drawable/caballo_blanca" />
+
+        <ImageView
+            android:id="@+id/imageViewH1"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageViewG1"
+            app:srcCompat="@drawable/tower_blanca" />
+
+        <ImageView
+            android:id="@+id/imageViewA2"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewA1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/peon_blanca" />
+
+        <ImageView
+            android:id="@+id/imageViewB2"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewB1"
+            app:layout_constraintStart_toEndOf="@+id/imageViewA2"
+            app:srcCompat="@drawable/peon_blanca" />
+
+        <ImageView
+            android:id="@+id/imageViewC2"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewC1"
+            app:layout_constraintStart_toEndOf="@+id/imageViewB2"
+            app:srcCompat="@drawable/peon_blanca" />
+
+        <ImageView
+            android:id="@+id/imageViewD2"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewD1"
+            app:layout_constraintStart_toEndOf="@+id/imageViewC2"
+            app:srcCompat="@drawable/peon_blanca" />
+
+        <ImageView
+            android:id="@+id/imageViewE2"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewE1"
+            app:layout_constraintStart_toEndOf="@+id/imageViewD2"
+            app:srcCompat="@drawable/peon_blanca" />
+
+        <ImageView
+            android:id="@+id/imageViewF2"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewF1"
+            app:layout_constraintStart_toEndOf="@+id/imageViewE2"
+            app:srcCompat="@drawable/peon_blanca" />
+
+        <ImageView
+            android:id="@+id/imageViewG2"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewG1"
+            app:layout_constraintStart_toEndOf="@+id/imageViewF2"
+            app:srcCompat="@drawable/peon_blanca" />
+
+        <ImageView
+            android:id="@+id/imageViewH2"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewH1"
+            app:layout_constraintStart_toEndOf="@+id/imageViewG2"
+            app:srcCompat="@drawable/peon_blanca" />
+
+        <ImageView
+            android:id="@+id/imageViewA3"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewA2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewB3"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewB2"
+            app:layout_constraintStart_toEndOf="@+id/imageViewA3"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewC3"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewC2"
+            app:layout_constraintStart_toEndOf="@+id/imageViewB3"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewD3"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewD2"
+            app:layout_constraintStart_toEndOf="@+id/imageViewC3"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewE3"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewE2"
+            app:layout_constraintStart_toEndOf="@+id/imageViewD3"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewF3"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewF2"
+            app:layout_constraintStart_toEndOf="@+id/imageViewE3"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewG3"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewG2"
+            app:layout_constraintStart_toEndOf="@+id/imageViewF3"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewH3"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewH2"
+            app:layout_constraintStart_toEndOf="@+id/imageViewG3"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewA4"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewA3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewB4"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewB3"
+            app:layout_constraintStart_toEndOf="@+id/imageViewA4"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewC4"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewC3"
+            app:layout_constraintStart_toEndOf="@+id/imageViewB4"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewD4"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewD3"
+            app:layout_constraintStart_toEndOf="@+id/imageViewC4"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewE4"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewE3"
+            app:layout_constraintStart_toEndOf="@+id/imageViewD4"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewF4"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewF3"
+            app:layout_constraintStart_toEndOf="@+id/imageViewE4"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewG4"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewG3"
+            app:layout_constraintStart_toEndOf="@+id/imageViewF4"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewH4"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewH3"
+            app:layout_constraintStart_toEndOf="@+id/imageViewG4"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewA5"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewA4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewB5"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewB4"
+            app:layout_constraintStart_toEndOf="@+id/imageViewA5"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewC5"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewC4"
+            app:layout_constraintStart_toEndOf="@+id/imageViewB5"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewD5"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewD4"
+            app:layout_constraintStart_toEndOf="@+id/imageViewC5"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewE5"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewE4"
+            app:layout_constraintStart_toEndOf="@+id/imageViewD5"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewF5"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewF4"
+            app:layout_constraintStart_toEndOf="@+id/imageViewE5"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewG5"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewG4"
+            app:layout_constraintStart_toEndOf="@+id/imageViewF5"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewH5"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewH4"
+            app:layout_constraintStart_toEndOf="@+id/imageViewG5"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewA6"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewA5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewB6"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewB5"
+            app:layout_constraintStart_toEndOf="@+id/imageViewA6"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewC6"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewC5"
+            app:layout_constraintStart_toEndOf="@+id/imageViewB6"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewD6"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewD5"
+            app:layout_constraintStart_toEndOf="@+id/imageViewC6"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewE6"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewE5"
+            app:layout_constraintStart_toEndOf="@+id/imageViewD6"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewF6"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewF5"
+            app:layout_constraintStart_toEndOf="@+id/imageViewE6"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewG6"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewG5"
+            app:layout_constraintStart_toEndOf="@+id/imageViewF6"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewH6"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewH5"
+            app:layout_constraintStart_toEndOf="@+id/imageViewG6"
+            app:srcCompat="@drawable/vacio" />
+
+        <ImageView
+            android:id="@+id/imageViewA7"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewA6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/peon_negra" />
+
+        <ImageView
+            android:id="@+id/imageViewB7"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewB6"
+            app:layout_constraintStart_toEndOf="@+id/imageViewA7"
+            app:srcCompat="@drawable/peon_negra" />
+
+        <ImageView
+            android:id="@+id/imageViewC7"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewC6"
+            app:layout_constraintStart_toEndOf="@+id/imageViewB7"
+            app:srcCompat="@drawable/peon_negra" />
+
+        <ImageView
+            android:id="@+id/imageViewD7"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewD6"
+            app:layout_constraintStart_toEndOf="@+id/imageViewC7"
+            app:srcCompat="@drawable/peon_negra" />
+
+        <ImageView
+            android:id="@+id/imageViewE7"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewE6"
+            app:layout_constraintStart_toEndOf="@+id/imageViewD7"
+            app:srcCompat="@drawable/peon_negra" />
+
+        <ImageView
+            android:id="@+id/imageViewF7"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewF6"
+            app:layout_constraintStart_toEndOf="@+id/imageViewE7"
+            app:srcCompat="@drawable/peon_negra" />
+
+        <ImageView
+            android:id="@+id/imageViewG7"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewG6"
+            app:layout_constraintStart_toEndOf="@+id/imageViewF7"
+            app:srcCompat="@drawable/peon_negra" />
+
+        <ImageView
+            android:id="@+id/imageViewH7"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewH6"
+            app:layout_constraintStart_toEndOf="@+id/imageViewG7"
+            app:srcCompat="@drawable/peon_negra" />
+
+        <ImageView
+            android:id="@+id/imageViewA8"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewA7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/tower_negra" />
+
+        <ImageView
+            android:id="@+id/imageViewB8"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewB7"
+            app:layout_constraintStart_toEndOf="@+id/imageViewA8"
+            app:srcCompat="@drawable/caballo_negra" />
+
+        <ImageView
+            android:id="@+id/imageViewC8"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewC7"
+            app:layout_constraintStart_toEndOf="@+id/imageViewB8"
+            app:srcCompat="@drawable/alfil_negra" />
+
+        <ImageView
+            android:id="@+id/imageViewD8"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewD7"
+            app:layout_constraintStart_toEndOf="@+id/imageViewC8"
+            app:srcCompat="@drawable/reina_negra" />
+
+        <ImageView
+            android:id="@+id/imageViewE8"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewE7"
+            app:layout_constraintStart_toEndOf="@+id/imageViewD8"
+            app:srcCompat="@drawable/rey_negra" />
+
+        <ImageView
+            android:id="@+id/imageViewF8"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewF7"
+            app:layout_constraintStart_toEndOf="@+id/imageViewE8"
+            app:srcCompat="@drawable/alfil_negra" />
+
+        <ImageView
+            android:id="@+id/imageViewG8"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionBlanca"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewG7"
+            app:layout_constraintStart_toEndOf="@+id/imageViewF8"
+            app:srcCompat="@drawable/caballo_negra" />
+
+        <ImageView
+            android:id="@+id/imageViewH8"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/seccionNegra"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewH7"
+            app:layout_constraintStart_toEndOf="@+id/imageViewG8"
+            app:srcCompat="@drawable/tower_negra" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Es el turno de:"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/Tablero"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/peon_blanca" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageViewB2"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewB1"
-        app:layout_constraintStart_toEndOf="@+id/imageViewA2"
-        app:srcCompat="@drawable/peon_blanca" />
-
-    <ImageView
-        android:id="@+id/imageViewC2"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewC1"
-        app:layout_constraintStart_toEndOf="@+id/imageViewB2"
-        app:srcCompat="@drawable/peon_blanca" />
-
-    <ImageView
-        android:id="@+id/imageViewD2"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewD1"
-        app:layout_constraintStart_toEndOf="@+id/imageViewC2"
-        app:srcCompat="@drawable/peon_blanca" />
-
-    <ImageView
-        android:id="@+id/imageViewE2"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewE1"
-        app:layout_constraintStart_toEndOf="@+id/imageViewD2"
-        app:srcCompat="@drawable/peon_blanca" />
-
-    <ImageView
-        android:id="@+id/imageViewF2"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewF1"
-        app:layout_constraintStart_toEndOf="@+id/imageViewE2"
-        app:srcCompat="@drawable/peon_blanca" />
-
-    <ImageView
-        android:id="@+id/imageViewG2"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewG1"
-        app:layout_constraintStart_toEndOf="@+id/imageViewF2"
-        app:srcCompat="@drawable/peon_blanca" />
-
-    <ImageView
-        android:id="@+id/imageViewH2"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewH1"
-        app:layout_constraintStart_toEndOf="@+id/imageViewG2"
-        app:srcCompat="@drawable/peon_blanca" />
-
-    <ImageView
-        android:id="@+id/imageViewA3"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewA2"
+    <TextView
+        android:id="@+id/textViewJugadorEnTurno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/Tablero"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewB3"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewB2"
-        app:layout_constraintStart_toEndOf="@+id/imageViewA3"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewC3"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewC2"
-        app:layout_constraintStart_toEndOf="@+id/imageViewB3"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewD3"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewD2"
-        app:layout_constraintStart_toEndOf="@+id/imageViewC3"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewE3"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewE2"
-        app:layout_constraintStart_toEndOf="@+id/imageViewD3"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewF3"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewF2"
-        app:layout_constraintStart_toEndOf="@+id/imageViewE3"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewG3"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewG2"
-        app:layout_constraintStart_toEndOf="@+id/imageViewF3"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewH3"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewH2"
-        app:layout_constraintStart_toEndOf="@+id/imageViewG3"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewA4"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewA3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewB4"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewB3"
-        app:layout_constraintStart_toEndOf="@+id/imageViewA4"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewC4"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewC3"
-        app:layout_constraintStart_toEndOf="@+id/imageViewB4"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewD4"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewD3"
-        app:layout_constraintStart_toEndOf="@+id/imageViewC4"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewE4"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewE3"
-        app:layout_constraintStart_toEndOf="@+id/imageViewD4"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewF4"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewF3"
-        app:layout_constraintStart_toEndOf="@+id/imageViewE4"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewG4"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewG3"
-        app:layout_constraintStart_toEndOf="@+id/imageViewF4"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewH4"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewH3"
-        app:layout_constraintStart_toEndOf="@+id/imageViewG4"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewA5"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewA4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewB5"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewB4"
-        app:layout_constraintStart_toEndOf="@+id/imageViewA5"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewC5"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewC4"
-        app:layout_constraintStart_toEndOf="@+id/imageViewB5"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewD5"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewD4"
-        app:layout_constraintStart_toEndOf="@+id/imageViewC5"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewE5"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewE4"
-        app:layout_constraintStart_toEndOf="@+id/imageViewD5"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewF5"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewF4"
-        app:layout_constraintStart_toEndOf="@+id/imageViewE5"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewG5"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewG4"
-        app:layout_constraintStart_toEndOf="@+id/imageViewF5"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewH5"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewH4"
-        app:layout_constraintStart_toEndOf="@+id/imageViewG5"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewA6"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewA5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewB6"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewB5"
-        app:layout_constraintStart_toEndOf="@+id/imageViewA6"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewC6"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewC5"
-        app:layout_constraintStart_toEndOf="@+id/imageViewB6"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewD6"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewD5"
-        app:layout_constraintStart_toEndOf="@+id/imageViewC6"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewE6"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewE5"
-        app:layout_constraintStart_toEndOf="@+id/imageViewD6"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewF6"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewF5"
-        app:layout_constraintStart_toEndOf="@+id/imageViewE6"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewG6"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewG5"
-        app:layout_constraintStart_toEndOf="@+id/imageViewF6"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewH6"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewH5"
-        app:layout_constraintStart_toEndOf="@+id/imageViewG6"
-        app:srcCompat="@drawable/vacio" />
-
-    <ImageView
-        android:id="@+id/imageViewA7"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewA6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/peon_negra" />
-
-    <ImageView
-        android:id="@+id/imageViewB7"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewB6"
-        app:layout_constraintStart_toEndOf="@+id/imageViewA7"
-        app:srcCompat="@drawable/peon_negra" />
-
-    <ImageView
-        android:id="@+id/imageViewC7"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewC6"
-        app:layout_constraintStart_toEndOf="@+id/imageViewB7"
-        app:srcCompat="@drawable/peon_negra" />
-
-    <ImageView
-        android:id="@+id/imageViewD7"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewD6"
-        app:layout_constraintStart_toEndOf="@+id/imageViewC7"
-        app:srcCompat="@drawable/peon_negra" />
-
-    <ImageView
-        android:id="@+id/imageViewE7"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewE6"
-        app:layout_constraintStart_toEndOf="@+id/imageViewD7"
-        app:srcCompat="@drawable/peon_negra" />
-
-    <ImageView
-        android:id="@+id/imageViewF7"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewF6"
-        app:layout_constraintStart_toEndOf="@+id/imageViewE7"
-        app:srcCompat="@drawable/peon_negra" />
-
-    <ImageView
-        android:id="@+id/imageViewG7"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewG6"
-        app:layout_constraintStart_toEndOf="@+id/imageViewF7"
-        app:srcCompat="@drawable/peon_negra" />
-
-    <ImageView
-        android:id="@+id/imageViewH7"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewH6"
-        app:layout_constraintStart_toEndOf="@+id/imageViewG7"
-        app:srcCompat="@drawable/peon_negra" />
-
-    <ImageView
-        android:id="@+id/imageViewA8"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewA7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/tower_negra" />
-
-    <ImageView
-        android:id="@+id/imageViewB8"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewB7"
-        app:layout_constraintStart_toEndOf="@+id/imageViewA8"
-        app:srcCompat="@drawable/caballo_negra" />
-
-    <ImageView
-        android:id="@+id/imageViewC8"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewC7"
-        app:layout_constraintStart_toEndOf="@+id/imageViewB8"
-        app:srcCompat="@drawable/alfil_negra" />
-
-    <ImageView
-        android:id="@+id/imageViewD8"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewD7"
-        app:layout_constraintStart_toEndOf="@+id/imageViewC8"
-        app:srcCompat="@drawable/reina_negra" />
-
-    <ImageView
-        android:id="@+id/imageViewE8"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewE7"
-        app:layout_constraintStart_toEndOf="@+id/imageViewD8"
-        app:srcCompat="@drawable/rey_negra" />
-
-    <ImageView
-        android:id="@+id/imageViewF8"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewF7"
-        app:layout_constraintStart_toEndOf="@+id/imageViewE8"
-        app:srcCompat="@drawable/alfil_negra" />
-
-    <ImageView
-        android:id="@+id/imageViewG8"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionBlanca"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewG7"
-        app:layout_constraintStart_toEndOf="@+id/imageViewF8"
-        app:srcCompat="@drawable/caballo_negra" />
-
-    <ImageView
-        android:id="@+id/imageViewH8"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@color/seccionNegra"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewH7"
-        app:layout_constraintStart_toEndOf="@+id/imageViewG8"
-        app:srcCompat="@drawable/tower_negra" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

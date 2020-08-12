@@ -8,7 +8,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.saymeddustga.chess.common.Constantes;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -227,11 +230,22 @@ public class GameActivity extends AppCompatActivity {
     private boolean finDelJuego = false;
 
     private ImageView[][] imageViews = new ImageView[8][8];
+    private TextView tvNick;
+
+    private String nick1, nick2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        tvNick = findViewById(R.id.textViewJugadorEnTurno);
+
+        // Extras: obtener el nick de usuario y setear en textview
+        Bundle Extras = getIntent().getExtras();
+        nick1 = Extras.getString(Constantes.EXTRA_NICK1);
+        nick2 = Extras.getString(Constantes.EXTRA_NICK2);
+        tvNick.setText(nick1);
 
         imageViews[7][0] = findViewById(R.id.imageViewA1);
         imageViews[7][1] = findViewById(R.id.imageViewB1);
@@ -881,7 +895,14 @@ public class GameActivity extends AppCompatActivity {
                     if(finDelJuego == true){
                         mostrarDialogoGameOver();
                     }
+
                     turno++;
+
+                    if(turno%2 == 0){
+                        tvNick.setText(nick2);
+                    }else {
+                        tvNick.setText(nick1);
+                    }
                 }
             }
         }
