@@ -10,14 +10,14 @@ import android.widget.Toast;
 
 public class GameActivity extends AppCompatActivity {
 
-    private char pixeles[][] = {{'Q','W','E','y','Y','e','w','q'},
+    private char pixeles[][] = {{'Q','W','E','y','Y','E','W','Q'},
                         {'p','p','p','p','p','p','p','p'},
                         {'b','b','b','b','b','b','b','b'},
                         {'b','b','b','b','b','b','b','b'},
                         {'b','b','b','b','b','b','b','b'},
                         {'b','b','b','b','b','b','b','b'},
                         {'P','P','P','P','P','P','P','P'},
-                        {'T','C','A','r','R','a','c','t'}};
+                        {'T','C','A','r','R','A','C','T'}};
 
     //caso a tratar
     char caso = 'b';
@@ -71,7 +71,7 @@ public class GameActivity extends AppCompatActivity {
     private int PB8Columna = 7;
     private boolean PB8PrimerMovimiento = false;
 
-    private boolean PBselec = false;
+    //private boolean PBselec = false;
 
     //Torres
 
@@ -83,7 +83,7 @@ public class GameActivity extends AppCompatActivity {
     private int TB2Fila = 7;
     private int TB2Columna = 7;
 
-    private boolean TBselec = false;
+    //private boolean TBselec = false;
 
     //Caballos
 
@@ -95,7 +95,7 @@ public class GameActivity extends AppCompatActivity {
     private int CB2Fila = 7;
     private int CB2Columna = 6;
 
-    private boolean CBselec = false;
+    //private boolean CBselec = false;
 
     //Alfiles
 
@@ -107,20 +107,21 @@ public class GameActivity extends AppCompatActivity {
     private int AB2Fila = 7;
     private int AB2Columna = 5;
 
-    private boolean ABselec = false;
+    //private boolean ABselec = false;
 
     //Rey y Reina
 
     //Rey Blanco:
     private int KB1Fila = 7;
     private int KB1Columna = 2;
-    private boolean KBselec = false;
+    //private boolean KBselec = false;
 
     //reina Blanco:
     private int QB2Fila = 7;
     private int QB2Columna = 5;
-    private boolean QBselec = false;
+    //private boolean QBselec = false;
 
+    private boolean piezaSeleccionadaGeneral = false;
 
 
     private ImageView[][] imageViews = new ImageView[8][8];
@@ -202,7 +203,7 @@ public class GameActivity extends AppCompatActivity {
         imageViews[7][0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(TBselec == false && PBselec == false){
+                if(piezaSeleccionadaGeneral == false){
                     caso = buscarCaso(7,0);
                     if(caso != 'b') {
                         imageViews[7][0].setBackgroundColor(Color.WHITE);
@@ -224,11 +225,37 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
+        //Coordenada H1
+        imageViews[7][7].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(piezaSeleccionadaGeneral == false/*TBselec == false && PBselec == false && CBselec == false && ABselec==false && KBselec == false && QBselec == false*/){
+                    caso = buscarCaso(7,7);
+                    if(caso != 'b') {
+                        imageViews[7][7].setBackgroundColor(Color.WHITE);
+                    }
+                }else if(filaPiezaCaso == 7 && columnaPiezaCaso == 7){
+                    pintarFondo(7,7);
+                    deseleccionar();
+                } else if(filaPiezaCaso != 7 || columnaPiezaCaso != 7){
+                    permiso = posibilidad(filaPiezaCaso, columnaPiezaCaso,7,7);
+                    if(permiso){
+                        char aux = pixeles[filaPiezaCaso][columnaPiezaCaso];
+                        pixeles[filaPiezaCaso][columnaPiezaCaso] = 'b';
+                        pixeles[7][7] = aux;
+                        pintarFondo(filaPiezaCaso,columnaPiezaCaso);
+                        permiso = false;
+                        sincronizar(7,7);
+                    }
+                }
+            }
+        });
+
         //Coordenada A2
         imageViews[6][0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(TBselec == false && PBselec == false){
+                if(piezaSeleccionadaGeneral == false){
                     caso = buscarCaso(6,0);
                     if(caso != 'b') {
                         imageViews[6][0].setBackgroundColor(Color.WHITE);
@@ -254,7 +281,7 @@ public class GameActivity extends AppCompatActivity {
         imageViews[6][1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(TBselec == false && PBselec == false){
+                if(piezaSeleccionadaGeneral == false){
                     caso = buscarCaso(6,1);
                     if(caso != 'b') {
                         imageViews[6][1].setBackgroundColor(Color.WHITE);
@@ -280,7 +307,7 @@ public class GameActivity extends AppCompatActivity {
         imageViews[6][2].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(TBselec == false && PBselec == false){
+                if(piezaSeleccionadaGeneral == false){
                     caso = buscarCaso(6,2);
                     if(caso != 'b') {
                         imageViews[6][2].setBackgroundColor(Color.WHITE);
@@ -306,7 +333,7 @@ public class GameActivity extends AppCompatActivity {
         imageViews[6][3].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(TBselec == false && PBselec == false){
+                if(piezaSeleccionadaGeneral == false){
                     caso = buscarCaso(6,3);
                     if(caso != 'b') {
                         imageViews[6][3].setBackgroundColor(Color.WHITE);
@@ -328,11 +355,115 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
+        //Coordenada E2
+        imageViews[6][4].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(piezaSeleccionadaGeneral == false){
+                    caso = buscarCaso(6,4);
+                    if(caso != 'b') {
+                        imageViews[6][4].setBackgroundColor(Color.WHITE);
+                    }
+                }else if(filaPiezaCaso == 6 && columnaPiezaCaso == 4){
+                    pintarFondo(6,4);
+                    deseleccionar();
+                } else if(filaPiezaCaso != 6 || columnaPiezaCaso != 4){
+                    permiso = posibilidad(filaPiezaCaso, columnaPiezaCaso,6,4);
+                    if(permiso){
+                        char aux = pixeles[filaPiezaCaso][columnaPiezaCaso];
+                        pixeles[filaPiezaCaso][columnaPiezaCaso] = 'b';
+                        pixeles[6][4] = aux;
+                        pintarFondo(filaPiezaCaso,columnaPiezaCaso);
+                        permiso = false;
+                        sincronizar(6,4);
+                    }
+                }
+            }
+        });
+
+        //Coordenada F2
+        imageViews[6][5].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(piezaSeleccionadaGeneral == false){
+                    caso = buscarCaso(6,5);
+                    if(caso != 'b') {
+                        imageViews[6][5].setBackgroundColor(Color.WHITE);
+                    }
+                }else if(filaPiezaCaso == 6 && columnaPiezaCaso == 5){
+                    pintarFondo(6,5);
+                    deseleccionar();
+                } else if(filaPiezaCaso != 6 || columnaPiezaCaso != 5){
+                    permiso = posibilidad(filaPiezaCaso, columnaPiezaCaso,6,5);
+                    if(permiso){
+                        char aux = pixeles[filaPiezaCaso][columnaPiezaCaso];
+                        pixeles[filaPiezaCaso][columnaPiezaCaso] = 'b';
+                        pixeles[6][5] = aux;
+                        pintarFondo(filaPiezaCaso,columnaPiezaCaso);
+                        permiso = false;
+                        sincronizar(6,5);
+                    }
+                }
+            }
+        });
+
+        //Coordenada G2
+        imageViews[6][6].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(piezaSeleccionadaGeneral == false){
+                    caso = buscarCaso(6,6);
+                    if(caso != 'b') {
+                        imageViews[6][6].setBackgroundColor(Color.WHITE);
+                    }
+                }else if(filaPiezaCaso == 6 && columnaPiezaCaso == 6){
+                    pintarFondo(6,6);
+                    deseleccionar();
+                } else if(filaPiezaCaso != 6 || columnaPiezaCaso != 6){
+                    permiso = posibilidad(filaPiezaCaso, columnaPiezaCaso,6,6);
+                    if(permiso){
+                        char aux = pixeles[filaPiezaCaso][columnaPiezaCaso];
+                        pixeles[filaPiezaCaso][columnaPiezaCaso] = 'b';
+                        pixeles[6][6] = aux;
+                        pintarFondo(filaPiezaCaso,columnaPiezaCaso);
+                        permiso = false;
+                        sincronizar(6,6);
+                    }
+                }
+            }
+        });
+
+        //Coordenada G2
+        imageViews[6][7].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(piezaSeleccionadaGeneral == false){
+                    caso = buscarCaso(6,7);
+                    if(caso != 'b') {
+                        imageViews[6][7].setBackgroundColor(Color.WHITE);
+                    }
+                }else if(filaPiezaCaso == 6 && columnaPiezaCaso == 7){
+                    pintarFondo(6,7);
+                    deseleccionar();
+                } else if(filaPiezaCaso != 6 || columnaPiezaCaso != 7){
+                    permiso = posibilidad(filaPiezaCaso, columnaPiezaCaso,6,7);
+                    if(permiso){
+                        char aux = pixeles[filaPiezaCaso][columnaPiezaCaso];
+                        pixeles[filaPiezaCaso][columnaPiezaCaso] = 'b';
+                        pixeles[6][7] = aux;
+                        pintarFondo(filaPiezaCaso,columnaPiezaCaso);
+                        permiso = false;
+                        sincronizar(6,7);
+                    }
+                }
+            }
+        });
+
         //Coordenada A3
         imageViews[5][0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(TBselec == false && PBselec == false){
+                if(piezaSeleccionadaGeneral == false){
                     caso = buscarCaso(5,0);
                     if(caso != 'b') {
                         imageViews[5][0].setBackgroundColor(Color.WHITE);
@@ -358,7 +489,7 @@ public class GameActivity extends AppCompatActivity {
         imageViews[5][1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(TBselec == false && PBselec == false){
+                if(piezaSeleccionadaGeneral == false){
                     caso = buscarCaso(5,1);
                     if(caso != 'b') {
                         imageViews[5][1].setBackgroundColor(Color.WHITE);
@@ -384,7 +515,7 @@ public class GameActivity extends AppCompatActivity {
         imageViews[5][2].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(TBselec == false && PBselec == false){
+                if(piezaSeleccionadaGeneral == false){
                     caso = buscarCaso(5,2);
                     if(caso != 'b') {
                         imageViews[5][2].setBackgroundColor(Color.WHITE);
@@ -406,11 +537,141 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
+        //Coordenada D3
+        imageViews[5][3].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(piezaSeleccionadaGeneral == false){
+                    caso = buscarCaso(5,3);
+                    if(caso != 'b') {
+                        imageViews[5][3].setBackgroundColor(Color.WHITE);
+                    }
+                }else if(filaPiezaCaso == 5 && columnaPiezaCaso == 3){
+                    pintarFondo(5,3);
+                    deseleccionar();
+                } else if(filaPiezaCaso != 5 || columnaPiezaCaso != 3){
+                    permiso = posibilidad(filaPiezaCaso, columnaPiezaCaso,5,3);
+                    if(permiso){
+                        char aux = pixeles[filaPiezaCaso][columnaPiezaCaso];
+                        pixeles[filaPiezaCaso][columnaPiezaCaso] = 'b';
+                        pixeles[5][3] = aux;
+                        pintarFondo(filaPiezaCaso,columnaPiezaCaso);
+                        permiso = false;
+                        sincronizar(5,3);
+                    }
+                }
+            }
+        });
+
+        //Coordenada E3
+        imageViews[5][4].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(piezaSeleccionadaGeneral == false){
+                    caso = buscarCaso(5,4);
+                    if(caso != 'b') {
+                        imageViews[5][4].setBackgroundColor(Color.WHITE);
+                    }
+                }else if(filaPiezaCaso == 5 && columnaPiezaCaso == 4){
+                    pintarFondo(5,4);
+                    deseleccionar();
+                } else if(filaPiezaCaso != 5 || columnaPiezaCaso != 4){
+                    permiso = posibilidad(filaPiezaCaso, columnaPiezaCaso,5,4);
+                    if(permiso){
+                        char aux = pixeles[filaPiezaCaso][columnaPiezaCaso];
+                        pixeles[filaPiezaCaso][columnaPiezaCaso] = 'b';
+                        pixeles[5][4] = aux;
+                        pintarFondo(filaPiezaCaso,columnaPiezaCaso);
+                        permiso = false;
+                        sincronizar(5,4);
+                    }
+                }
+            }
+        });
+
+        //Coordenada F3
+        imageViews[5][5].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(piezaSeleccionadaGeneral == false){
+                    caso = buscarCaso(5,5);
+                    if(caso != 'b') {
+                        imageViews[5][5].setBackgroundColor(Color.WHITE);
+                    }
+                }else if(filaPiezaCaso == 5 && columnaPiezaCaso == 5){
+                    pintarFondo(5,5);
+                    deseleccionar();
+                } else if(filaPiezaCaso != 5 || columnaPiezaCaso != 5){
+                    permiso = posibilidad(filaPiezaCaso, columnaPiezaCaso,5,5);
+                    if(permiso){
+                        char aux = pixeles[filaPiezaCaso][columnaPiezaCaso];
+                        pixeles[filaPiezaCaso][columnaPiezaCaso] = 'b';
+                        pixeles[5][5] = aux;
+                        pintarFondo(filaPiezaCaso,columnaPiezaCaso);
+                        permiso = false;
+                        sincronizar(5,5);
+                    }
+                }
+            }
+        });
+
+        //Coordenada G3
+        imageViews[5][6].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(piezaSeleccionadaGeneral == false){
+                    caso = buscarCaso(5,6);
+                    if(caso != 'b') {
+                        imageViews[5][6].setBackgroundColor(Color.WHITE);
+                    }
+                }else if(filaPiezaCaso == 5 && columnaPiezaCaso == 6){
+                    pintarFondo(5,6);
+                    deseleccionar();
+                } else if(filaPiezaCaso != 5 || columnaPiezaCaso != 6){
+                    permiso = posibilidad(filaPiezaCaso, columnaPiezaCaso,5,6);
+                    if(permiso){
+                        char aux = pixeles[filaPiezaCaso][columnaPiezaCaso];
+                        pixeles[filaPiezaCaso][columnaPiezaCaso] = 'b';
+                        pixeles[5][6] = aux;
+                        pintarFondo(filaPiezaCaso,columnaPiezaCaso);
+                        permiso = false;
+                        sincronizar(5,6);
+                    }
+                }
+            }
+        });
+
+        //Coordenada H3
+        imageViews[5][7].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(piezaSeleccionadaGeneral == false){
+                    caso = buscarCaso(5,7);
+                    if(caso != 'b') {
+                        imageViews[5][7].setBackgroundColor(Color.WHITE);
+                    }
+                }else if(filaPiezaCaso == 5 && columnaPiezaCaso == 7){
+                    pintarFondo(5,7);
+                    deseleccionar();
+                } else if(filaPiezaCaso != 5 || columnaPiezaCaso != 7){
+                    permiso = posibilidad(filaPiezaCaso, columnaPiezaCaso,5,7);
+                    if(permiso){
+                        char aux = pixeles[filaPiezaCaso][columnaPiezaCaso];
+                        pixeles[filaPiezaCaso][columnaPiezaCaso] = 'b';
+                        pixeles[5][7] = aux;
+                        pintarFondo(filaPiezaCaso,columnaPiezaCaso);
+                        permiso = false;
+                        sincronizar(5,7);
+                    }
+                }
+            }
+        });
+
         //Coordenada A4
         imageViews[4][0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(TBselec == false && PBselec == false){
+                if(piezaSeleccionadaGeneral == false){
                     caso = buscarCaso(4,0);
                     if(caso != 'b') {
                         imageViews[4][0].setBackgroundColor(Color.WHITE);
@@ -436,7 +697,7 @@ public class GameActivity extends AppCompatActivity {
         imageViews[4][1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(TBselec == false && PBselec == false){
+                if(piezaSeleccionadaGeneral == false){
                     caso = buscarCaso(4,1);
                     if(caso != 'b') {
                         imageViews[4][1].setBackgroundColor(Color.WHITE);
@@ -480,14 +741,14 @@ public class GameActivity extends AppCompatActivity {
             }
             System.out.println("");
         }
-
-        if(caso == 'T' || caso == 't'){
+/*
+        if(caso == 'T'){
             TBselec = false;
         }
-        if(caso == 'C' || caso == 'c'){
+        if(caso == 'C'){
             CBselec = false;
         }
-        if(caso == 'A' || caso == 'a'){
+        if(caso == 'A'){
             ABselec = false;
         }
         if(caso == 'R'){
@@ -498,7 +759,8 @@ public class GameActivity extends AppCompatActivity {
         }
         if(caso == 'P'){
             PBselec = false;
-        }
+        }*/
+        piezaSeleccionadaGeneral = false;
         permiso = false;
         filaPiezaCaso = 8;
         columnaPiezaCaso = 8;
@@ -507,11 +769,18 @@ public class GameActivity extends AppCompatActivity {
 
     private void sincronizar(int filaMod, int columnaMod) {
         if(caso == 'T'){
-            TB1Fila = filaMod;
-            TB1Columna = columnaMod;
+            if(TB1Fila == filaPiezaCaso && columnaPiezaCaso == TB1Columna) {
+                TB1Fila = filaMod;
+                TB1Columna = columnaMod;
+            }else if(filaPiezaCaso == TB2Fila && columnaPiezaCaso == TB2Columna) {
+                TB2Fila = filaMod;
+                TB2Columna = columnaMod;
+            }
+            /*TB1Fila = filaMod;
+            TB1Columna = columnaMod;*/
             imageViews[filaMod][columnaMod].setImageResource(R.drawable.tower_blanca);
             imageViews[filaPiezaCaso][columnaPiezaCaso].setImageResource(R.drawable.vacio);
-            TBselec = false;
+            //TBselec = false;
         }
         if(caso == 'P'){
             if(filaPiezaCaso == PB1Fila && columnaPiezaCaso == PB1Columna) {
@@ -541,8 +810,9 @@ public class GameActivity extends AppCompatActivity {
             }
             imageViews[filaMod][columnaMod].setImageResource(R.drawable.peon_blanca);
             imageViews[filaPiezaCaso][columnaPiezaCaso].setImageResource(R.drawable.vacio);
-            PBselec = false;
+            //PBselec = false;
         }
+        piezaSeleccionadaGeneral = false;
     }
 
     private char buscarCaso(int fila, int columna){
@@ -550,9 +820,16 @@ public class GameActivity extends AppCompatActivity {
         char ocasion = pixeles[fila][columna];
 
         if(ocasion == 'T'){
-            filaPiezaCaso = TB1Fila;
-            columnaPiezaCaso = TB1Columna;
-            TBselec = true;
+            if(TB1Fila == fila && columna == TB1Columna) {
+                filaPiezaCaso = TB1Fila;
+                columnaPiezaCaso = TB1Columna;
+            }else if(fila == TB2Fila && columna == TB2Columna) {
+                filaPiezaCaso = TB2Fila;
+                columnaPiezaCaso = TB2Columna;
+            }
+            /*filaPiezaCaso = TB1Fila;
+            columnaPiezaCaso = TB1Columna;*/
+            //TBselec = true;
         }
         if(ocasion == 'P'){
             if(PB1Fila == fila && columna == PB1Columna) {
@@ -580,8 +857,11 @@ public class GameActivity extends AppCompatActivity {
                 filaPiezaCaso = PB8Fila;
                 columnaPiezaCaso = PB8Columna;
             }
-            PBselec = true;
+            //PBselec = true;
         }
+
+        if(ocasion != 'b')
+            piezaSeleccionadaGeneral = true;
 
         return pixeles[fila][columna];
     }
@@ -664,17 +944,15 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private boolean hayAliado(int fila, int columna){
-        if(pixeles[fila][columna] == 'T' || pixeles[fila][columna] == 't' || pixeles[fila][columna] == 'C'
-        || pixeles[fila][columna] == 'c' || pixeles[fila][columna] == 'A' || pixeles[fila][columna] == 'a'
-        || pixeles[fila][columna] == 'R' || pixeles[fila][columna] == 'r' || pixeles[fila][columna] == 'P'){
+        if(pixeles[fila][columna] == 'T' || pixeles[fila][columna] == 'C' || pixeles[fila][columna] == 'A'
+                || pixeles[fila][columna] == 'R' || pixeles[fila][columna] == 'r' || pixeles[fila][columna] == 'P'){
             return true;
         }
         return false;
     }
 
     private boolean hayEnemigo(int fila, int columna){
-        if(pixeles[fila][columna] == 'Q' || pixeles[fila][columna] == 'q' || pixeles[fila][columna] == 'W'
-                || pixeles[fila][columna] == 'w' || pixeles[fila][columna] == 'E' || pixeles[fila][columna] == 'e'
+        if(pixeles[fila][columna] == 'Q' || pixeles[fila][columna] == 'W' || pixeles[fila][columna] == 'E'
                 || pixeles[fila][columna] == 'Y' || pixeles[fila][columna] == 'y' || pixeles[fila][columna] == 'p'){
             return true;
         }
@@ -683,12 +961,12 @@ public class GameActivity extends AppCompatActivity {
 }
 
 /*
-    private char pixeles[][] = {{'Q','W','E','y','Y','e','w','q'},
+    private char pixeles[][] = {{'Q','W','E','y','Y','E','W','Q'},
                                 {'p','p','p','p','p','p','p','p'},
                                 {'b','b','b','b','b','b','b','b'},
                                 {'b','b','b','b','b','b','b','b'},
                                 {'b','b','b','b','b','b','b','b'},
                                 {'b','b','b','b','b','b','b','b'},
                                 {'P','P','P','P','P','P','P','P'},
-                                {'T','C','A','r','R','a','c','t'}};
+                                {'T','C','A','r','R','A','C','T'}};
  */
