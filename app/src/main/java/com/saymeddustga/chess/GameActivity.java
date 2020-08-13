@@ -312,6 +312,8 @@ public class GameActivity extends AppCompatActivity {
         imageViews[0][6] = findViewById(R.id.imageViewG8);
         imageViews[0][7] = findViewById(R.id.imageViewH8);
 
+        //int testeo = imageViews[7][0].getWidth();
+        //imageViews[7][0].setMinimumHeight(testeo);
 
         //Coordenada A1
         imageViews[7][0].setOnClickListener(new View.OnClickListener() {
