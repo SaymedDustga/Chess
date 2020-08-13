@@ -1394,21 +1394,30 @@ public class GameActivity extends AppCompatActivity {
         //Posibilidad Alfiles
 
         if((caso == 'A' || caso == 'E') || (caso == 'r' || caso == 'y')){
-            if(filaSolicitud != filaPieza && columnaSolicitud != columnaPieza){
+
+            if((filaSolicitud != filaPieza && columnaSolicitud != columnaPieza)){
                 if(filaSolicitud > filaPieza && columnaSolicitud > columnaPieza){
                     for(int i = filaPieza+1, j = columnaPieza+1; i < filaSolicitud && j < columnaSolicitud; i++, j++){
                         if(hayAliado(i,j) || hayEnemigo(i,j)){
                             return false;
                         }
                     }
-                    return true;
+                    int contFilas = 0, contColumnas = 0;
+                    for(int i = filaPieza; i < filaSolicitud; i++,contFilas++);
+                    for(int i = columnaPieza; i < columnaSolicitud; i++,contColumnas++);
+                    if(contFilas == contColumnas)
+                        return true;
                 } else if(filaSolicitud > filaPieza && columnaSolicitud < columnaPieza){
                     for(int i = filaPieza+1, j = columnaPieza-1; i < filaSolicitud && j > columnaSolicitud; i++, j--){
                         if(hayAliado(i,j) || hayEnemigo(i,j)){
                             return false;
                         }
                     }
-                    return true;
+                    int contFilas = 0, contColumnas = 0;
+                    for(int i = filaPieza; i < filaSolicitud; i++,contFilas++);
+                    for(int i = columnaPieza; i > columnaSolicitud; i--,contColumnas++);
+                    if(contFilas == contColumnas)
+                        return true;
                 }
                 if(filaSolicitud < filaPieza && columnaSolicitud > columnaPieza){
                     for(int i = filaPieza-1, j = columnaPieza+1; i > filaSolicitud && j < columnaSolicitud; i--, j++){
@@ -1416,14 +1425,22 @@ public class GameActivity extends AppCompatActivity {
                             return false;
                         }
                     }
-                    return true;
+                    int contFilas = 0, contColumnas = 0;
+                    for(int i = filaPieza; i > filaSolicitud; i--,contFilas++);
+                    for(int i = columnaPieza; i < columnaSolicitud; i++,contColumnas++);
+                    if(contFilas == contColumnas)
+                        return true;
                 } else if(columnaSolicitud < columnaPieza  && columnaSolicitud < columnaPieza){
                     for(int i = filaPieza-1, j = columnaPieza-1; i > filaSolicitud && j > columnaSolicitud; i--, j--){
                         if(hayAliado(i,j) || hayEnemigo(i,j)){
                             return false;
                         }
                     }
-                    return true;
+                    int contFilas = 0, contColumnas = 0;
+                    for(int i = filaPieza; i > filaSolicitud; i--,contFilas++);
+                    for(int i = columnaPieza; i > columnaSolicitud; i--,contColumnas++);
+                    if(contFilas == contColumnas)
+                        return true;
                 }
             }
             return false;
