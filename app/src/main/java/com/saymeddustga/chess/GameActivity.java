@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -230,9 +232,11 @@ public class GameActivity extends AppCompatActivity {
     private boolean finDelJuego = false;
 
     private ImageView[][] imageViews = new ImageView[8][8];
-    private TextView tvNick;
+    private TextView tvNick, tvEsTurno;
 
     private String nick1, nick2;
+
+    MediaPlayer movimiento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -240,12 +244,18 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         tvNick = findViewById(R.id.textViewJugadorEnTurno);
+        tvEsTurno = findViewById(R.id.textViewEsTurnoDe);
 
         // Extras: obtener el nick de usuario y setear en textview
         Bundle Extras = getIntent().getExtras();
         nick1 = Extras.getString(Constantes.EXTRA_NICK1);
         nick2 = Extras.getString(Constantes.EXTRA_NICK2);
         tvNick.setText(nick1);
+
+        Typeface typeface = Typeface.createFromAsset(getAssets(),"pixel.ttf");
+
+        tvEsTurno.setTypeface(typeface);
+        tvNick.setTypeface(typeface);
 
         imageViews[7][0] = findViewById(R.id.imageViewA1);
         imageViews[7][1] = findViewById(R.id.imageViewB1);
@@ -835,8 +845,13 @@ public class GameActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
 
         // 2. Chain together various setter methods to set the dialog characteristics
-        builder.setMessage("El ganador el es player "+ganador)
-                .setTitle("Game Over");
+        if(ganador == 1) {
+            builder.setMessage("El ganador el es: " + nick1)
+                    .setTitle("Game Over");
+        }else{
+            builder.setMessage("El ganador el es: " + nick2)
+                    .setTitle("Game Over");
+        }
 
         // Add the buttons
         /*builder.setPositiveButton("Jugar de nuevo", new DialogInterface.OnClickListener() {
@@ -893,6 +908,13 @@ public class GameActivity extends AppCompatActivity {
                     pintarFondo(filaPiezaCaso, columnaPiezaCaso);
                     permiso = false;
                     sincronizar(filaTrabajando, columnaTrabajando);
+                    //Sonido movimieto
+                    if (movimiento != null) {
+                        movimiento.release();
+                    }
+                    movimiento = MediaPlayer.create(GameActivity.this, R.raw.mov);
+                    movimiento.start();
+
                     finDelJuego = GameOver();
                     if(finDelJuego == true){
                         mostrarDialogoGameOver();
