@@ -1,8 +1,5 @@
 package com.saymeddustga.chess;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -13,7 +10,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.saymeddustga.chess.common.Constantes;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+//import com.saymeddustga.chess.common.Constantes;
+
+import com.saymeddustga.chess.common.*;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -1490,34 +1492,58 @@ public class GameActivity extends AppCompatActivity {
 
             if((filaPieza == PB1Fila && columnaPieza == PB1Columna) && (!PB1PrimerMovimiento && filaSolicitud == filaPieza-2)
             && (pixeles[filaSolicitud][columnaSolicitud] == 'b' && pixeles[filaSolicitud+1][columnaSolicitud] == 'b')){
+                if((columnaSolicitud != PB1Columna && pixeles[filaSolicitud][columnaSolicitud] == 'b') && !PB1PrimerMovimiento){
+                    return false;
+                }
                 PB1PrimerMovimiento = true;
                 return true;
             }else if((filaPieza == PB2Fila && columnaPieza == PB2Columna) && (!PB2PrimerMovimiento && filaSolicitud == filaPieza-2)
                     && (pixeles[filaSolicitud][columnaSolicitud] == 'b' && pixeles[filaSolicitud+1][columnaSolicitud] == 'b')){
+                if((columnaSolicitud != PB2Columna && pixeles[filaSolicitud][columnaSolicitud] == 'b') && !PB2PrimerMovimiento){
+                    return false;
+                }
                 PB2PrimerMovimiento = true;
                 return true;
             }else if((filaPieza == PB3Fila && columnaPieza == PB3Columna) && (!PB3PrimerMovimiento && filaSolicitud == filaPieza-2)
                     && (pixeles[filaSolicitud][columnaSolicitud] == 'b' && pixeles[filaSolicitud+1][columnaSolicitud] == 'b')){
+                if((columnaSolicitud != PB3Columna && pixeles[filaSolicitud][columnaSolicitud] == 'b') && !PB3PrimerMovimiento){
+                    return false;
+                }
                 PB3PrimerMovimiento = true;
                 return true;
             }else if((filaPieza == PB4Fila && columnaPieza == PB4Columna) && (!PB4PrimerMovimiento && filaSolicitud == filaPieza-2)
                     && (pixeles[filaSolicitud][columnaSolicitud] == 'b' && pixeles[filaSolicitud+1][columnaSolicitud] == 'b')){
+                if((columnaSolicitud != PB4Columna && pixeles[filaSolicitud][columnaSolicitud] == 'b') && !PB4PrimerMovimiento){
+                    return false;
+                }
                 PB4PrimerMovimiento = true;
                 return true;
             }else if((filaPieza == PB5Fila && columnaPieza == PB5Columna) && (!PB5PrimerMovimiento && filaSolicitud == filaPieza-2)
                     && (pixeles[filaSolicitud][columnaSolicitud] == 'b' && pixeles[filaSolicitud+1][columnaSolicitud] == 'b')){
+                if((columnaSolicitud != PB5Columna && pixeles[filaSolicitud][columnaSolicitud] == 'b') && !PB5PrimerMovimiento){
+                    return false;
+                }
                 PB5PrimerMovimiento = true;
                 return true;
             }else if((filaPieza == PB6Fila && columnaPieza == PB6Columna) && (!PB6PrimerMovimiento && filaSolicitud == filaPieza-2)
                     && (pixeles[filaSolicitud][columnaSolicitud] == 'b' && pixeles[filaSolicitud+1][columnaSolicitud] == 'b')){
+                if((columnaSolicitud != PB6Columna && pixeles[filaSolicitud][columnaSolicitud] == 'b') && !PB6PrimerMovimiento){
+                    return false;
+                }
                 PB6PrimerMovimiento = true;
                 return true;
             }else if((filaPieza == PB7Fila && columnaPieza == PB7Columna) && (!PB7PrimerMovimiento && filaSolicitud == filaPieza-2)
                     && (pixeles[filaSolicitud][columnaSolicitud] == 'b' && pixeles[filaSolicitud+1][columnaSolicitud] == 'b')){
+                if((columnaSolicitud != PB7Columna && pixeles[filaSolicitud][columnaSolicitud] == 'b') && !PB7PrimerMovimiento){
+                    return false;
+                }
                 PB7PrimerMovimiento = true;
                 return true;
             }else if((filaPieza == PB8Fila && columnaPieza == PB8Columna) && (!PB8PrimerMovimiento && filaSolicitud == filaPieza-2)
                     && (pixeles[filaSolicitud][columnaSolicitud] == 'b' && pixeles[filaSolicitud+1][columnaSolicitud] == 'b')){
+                if((columnaSolicitud != PB8Columna && pixeles[filaSolicitud][columnaSolicitud] == 'b') && !PB8PrimerMovimiento){
+                    return false;
+                }
                 PB8PrimerMovimiento = true;
                 return true;
             }
@@ -1565,34 +1591,58 @@ public class GameActivity extends AppCompatActivity {
 
             if((filaPieza == PN1Fila && columnaPieza == PN1Columna) && (!PN1PrimerMovimiento && filaSolicitud == filaPieza+2)
                     && (pixeles[filaSolicitud][columnaSolicitud] == 'b' && pixeles[filaSolicitud-1][columnaSolicitud] == 'b')){
+                if((columnaSolicitud != PN1Columna && pixeles[filaSolicitud][columnaSolicitud] == 'b') && !PN1PrimerMovimiento){
+                    return false;
+                }
                 PN1PrimerMovimiento = true;
                 return true;
             }else if((filaPieza == PN2Fila && columnaPieza == PN2Columna) && (!PN2PrimerMovimiento && filaSolicitud == filaPieza+2)
                     && (pixeles[filaSolicitud][columnaSolicitud] == 'b' && pixeles[filaSolicitud-1][columnaSolicitud] == 'b')){
+                if((columnaSolicitud != PN2Columna && pixeles[filaSolicitud][columnaSolicitud] == 'b') && !PN2PrimerMovimiento){
+                    return false;
+                }
                 PN2PrimerMovimiento = true;
                 return true;
             }else if((filaPieza == PN3Fila && columnaPieza == PN3Columna) && (!PN3PrimerMovimiento && filaSolicitud == filaPieza+2)
                     && (pixeles[filaSolicitud][columnaSolicitud] == 'b' && pixeles[filaSolicitud-1][columnaSolicitud] == 'b')){
+                if((columnaSolicitud != PN3Columna && pixeles[filaSolicitud][columnaSolicitud] == 'b') && !PN3PrimerMovimiento){
+                    return false;
+                }
                 PN3PrimerMovimiento = true;
                 return true;
             }else if((filaPieza == PN4Fila && columnaPieza == PN4Columna) && (!PN4PrimerMovimiento && filaSolicitud == filaPieza+2)
                     && (pixeles[filaSolicitud][columnaSolicitud] == 'b' && pixeles[filaSolicitud-1][columnaSolicitud] == 'b')){
+                if((columnaSolicitud != PN4Columna && pixeles[filaSolicitud][columnaSolicitud] == 'b') && !PN4PrimerMovimiento){
+                    return false;
+                }
                 PN4PrimerMovimiento = true;
                 return true;
             }else if((filaPieza == PN5Fila && columnaPieza == PN5Columna) && (!PN5PrimerMovimiento && filaSolicitud == filaPieza+2)
                     && (pixeles[filaSolicitud][columnaSolicitud] == 'b' && pixeles[filaSolicitud-1][columnaSolicitud] == 'b')){
+                if((columnaSolicitud != PN5Columna && pixeles[filaSolicitud][columnaSolicitud] == 'b') && !PN5PrimerMovimiento){
+                    return false;
+                }
                 PN5PrimerMovimiento = true;
                 return true;
             }else if((filaPieza == PN6Fila && columnaPieza == PN6Columna) && (!PN6PrimerMovimiento && filaSolicitud == filaPieza+2)
                     && (pixeles[filaSolicitud][columnaSolicitud] == 'b' && pixeles[filaSolicitud-1][columnaSolicitud] == 'b')){
+                if((columnaSolicitud != PN6Columna && pixeles[filaSolicitud][columnaSolicitud] == 'b') && !PN6PrimerMovimiento){
+                    return false;
+                }
                 PN6PrimerMovimiento = true;
                 return true;
             }else if((filaPieza == PN7Fila && columnaPieza == PN7Columna) && (!PN7PrimerMovimiento && filaSolicitud == filaPieza+2)
                     && (pixeles[filaSolicitud][columnaSolicitud] == 'b' && pixeles[filaSolicitud-1][columnaSolicitud] == 'b')){
+                if((columnaSolicitud != PN7Columna && pixeles[filaSolicitud][columnaSolicitud] == 'b') && !PN7PrimerMovimiento){
+                    return false;
+                }
                 PN7PrimerMovimiento = true;
                 return true;
             }else if((filaPieza == PN8Fila && columnaPieza == PN8Columna) && (!PN8PrimerMovimiento && filaSolicitud == filaPieza+2)
                     && (pixeles[filaSolicitud][columnaSolicitud] == 'b' && pixeles[filaSolicitud-1][columnaSolicitud] == 'b')){
+                if((columnaSolicitud != PN8Columna && pixeles[filaSolicitud][columnaSolicitud] == 'b') && !PN8PrimerMovimiento){
+                    return false;
+                }
                 PN8PrimerMovimiento = true;
                 return true;
             }
